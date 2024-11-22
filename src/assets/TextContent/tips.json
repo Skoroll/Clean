@@ -1,0 +1,76 @@
+[
+    {
+      "id": 1,
+      "title": "Planification",
+      "tips": [
+        "Établissez un planning hebdomadaire : Répartissez les tâches en fonction de leur fréquence (quotidienne, hebdomadaire, mensuelle).",
+        "Commencez par les zones prioritaires : Nettoyez d'abord les pièces les plus utilisées comme la cuisine et la salle de bain.",
+        "Définissez une durée pour chaque tâche : Cela aide à rester concentré et à ne pas perdre trop de temps."
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Organisation",
+      "tips": [
+        "Débarrassez les surfaces encombrées avant de nettoyer : Rangez les objets pour un nettoyage plus efficace.",
+        "Travaillez du haut vers le bas : Évitez que la poussière retombe sur une surface déjà nettoyée.",
+        "Utilisez des paniers ou des bacs : Idéal pour trier rapidement les objets qui ne sont pas à leur place."
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Produits et outils",
+      "tips": [
+        "Préparez vos produits à l’avance : Ayez un kit de nettoyage avec des produits adaptés à chaque surface.",
+        "Utilisez des chiffons en microfibre : Ils sont efficaces et nécessitent moins de produits.",
+        "Privilégiez les produits naturels : Vinaigre blanc, bicarbonate de soude et savon noir sont polyvalents et écologiques.",
+        "Investissez dans des outils multifonctions : Aspirateur avec embouts variés, serpillère avec pulvérisateur intégré, etc."
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Techniques",
+      "tips": [
+        "Aérez les pièces avant et après le ménage : Renouveler l’air rend l’espace plus agréable.",
+        "Utilisez des gestes circulaires pour nettoyer : Cela évite de rayer les surfaces délicates.",
+        "Laissez agir les produits : Laisser poser quelques minutes permet de décrasser sans trop frotter."
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Optimisation du temps",
+      "tips": [
+        "Regroupez les tâches similaires : Par exemple, nettoyez toutes les vitres en une seule fois.",
+        "Multitâchez quand possible : Faites tourner une machine pendant que vous nettoyez une autre pièce.",
+        "Mettez une musique motivante : Cela rend le ménage plus agréable et stimule votre rythme."
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Entretien quotidien",
+      "tips": [
+        "Faites un petit rangement chaque jour : Cela évite l’accumulation.",
+        "Nettoyez immédiatement après usage : Par exemple, essuyez les surfaces de la cuisine après chaque repas.",
+        "Utilisez des tapis ou paillassons : Ils retiennent la saleté avant qu’elle ne se disperse dans la maison."
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Astuces pour chaque pièce",
+      "tips": [
+        "Cuisine : Dégraissez les plaques de cuisson après chaque utilisation pour éviter les accumulations.",
+        "Salle de bain : Passez une raclette sur les parois de douche après chaque utilisation pour éviter les traces de calcaire.",
+        "Chambre : Aérez et faites le lit chaque matin pour une ambiance apaisante.",
+        "Salon : Aspirez les tapis et les coussins pour éliminer la poussière et les allergènes."
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Motivation",
+      "tips": [
+        "Impliquez toute la famille : Attribuez des petites tâches à chacun pour partager l’effort.",
+        "Récompensez-vous après un grand ménage : Profitez d’un bon moment de détente dans un espace propre et organisé."
+      ]
+    }
+  ]
+  

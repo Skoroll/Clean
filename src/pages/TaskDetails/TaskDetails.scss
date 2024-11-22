@@ -1,0 +1,81 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
+
+.tasks {
+  form {
+    @include flex-column;
+    gap: $gap-base;
+  }
+
+  &-details__task {
+    &--frequency,
+    &--time {
+
+      font-style: italic;
+    }
+  }
+  
+  &__divider {
+    width: 80%;
+    margin: $gap-base auto auto auto;
+    height: 5px;
+    background: $primary-color;
+    border-radius: $radius-base;
+  }
+
+  .task-details__task {
+    &--tools {
+      ul {
+        @include flex-row;
+        gap: $gap-base;
+        list-style: none;
+        padding: 0;
+      }
+    }
+  }
+}
+
+.task-details {
+  &--block {
+    @include flex-row;
+    align-items: baseline;
+    .task-details__task {
+      &--heading {
+        width: 45%;
+        margin: 0;
+        align-items: flex-start;
+      }
+      &--div-time {
+        width: 45%;
+        @include flex-column;
+
+        .tasks-details__task--time,
+        .task-details__task--frequency {
+          margin: auto 0 auto auto;
+        }
+      }
+    }
+  }
+}
+
+.task-details__task{
+    border: 1px solid transparent;
+    padding: $padding-elem;
+    transition:  background 1s;
+    transition: border-radius 1s;
+
+
+    &:hover{
+        border: $border-base;
+        background: $border-color;
+        border-radius: $radius-base;
+        transform: scale(102%);
+    }
+}
+
+.tasks-done{
+  &--none{
+    font-style: italic;
+    margin-left: 40px;
+  }
+}

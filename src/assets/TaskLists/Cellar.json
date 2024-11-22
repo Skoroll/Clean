@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "name": "Organiser les étagères",
+    "description": "Réorganiser les produits alimentaires et nettoyants sur les étagères.",
+    "time": "30 minutes",
+    "equipment": "Étagères",
+    "frequency": "Mensuelle",
+    "what": ["Panier à linge", "Étagères"]
+  },
+  {
+    "id": 2,
+    "name": "Vérifier les dates de péremption",
+    "description": "Vérifier et jeter les produits périmés.",
+    "time": "20 minutes",
+    "equipment": "Étagères",
+    "frequency": "Mensuelle",
+    "what": ["Poubelles", "Sac poubelle"]
+  },
+  {
+    "id": 3,
+    "name": "Nettoyer les étagères",
+    "description": "Essuyer les étagères pour enlever la poussière et les résidus de produits.",
+    "time": "15 minutes",
+    "equipment": "Étagères",
+    "frequency": "Mensuelle",
+    "what": ["Chiffon", "Produit nettoyant"]
+  },
+  {
+    "id": 4,
+    "name": "Vider les poubelles du cellier",
+    "description": "Vider les poubelles pour éviter les mauvaises odeurs.",
+    "time": "5 minutes",
+    "equipment": "Poubelle",
+    "frequency": "Hebdomadaire",
+    "what": ["Sac poubelle"]
+  },
+  {
+    "id": 5,
+    "name": "Organiser les bocaux et conserves",
+    "description": "Réorganiser les bocaux et conserves pour mieux les voir et les atteindre.",
+    "time": "20 minutes",
+    "equipment": "Étagères",
+    "frequency": "Trimestrielle",
+    "what": ["Bocaux", "Conserves"]
+  },
+  {
+    "id": 6,
+    "name": "Vérifier les stocks de produits ménagers",
+    "description": "Vérifier les stocks de produits ménagers et en acheter si nécessaire.",
+    "time": "10 minutes",
+    "equipment": "Étagères",
+    "frequency": "Trimestrielle",
+    "what": ["Liste de courses", "Produits ménagers"]
+  },
+  {
+    "id": 7,
+    "name": "Nettoyer le sol",
+    "description": "Balayer ou passer la serpillère sur le sol du cellier.",
+    "time": "20 minutes",
+    "equipment": "Sol",
+    "frequency": "Mensuelle",
+    "what": ["Balai", "Serpillière"]
+  },
+  {
+    "id": 8,
+    "name": "Dépoussiérer les produits",
+    "description": "Enlever la poussière des produits stockés sur les étagères.",
+    "time": "10 minutes",
+    "equipment": "Étagères",
+    "frequency": "Trimestrielle",
+    "what": ["Chiffon", "Dépoussiérant"]
+  }
+]

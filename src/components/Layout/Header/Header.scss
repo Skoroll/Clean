@@ -1,0 +1,101 @@
+@import "../../../styles/mixins.scss";
+@import "../../../styles/variables.scss";
+
+.header {
+  @include flex-row;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: $primary-color;
+  z-index: 800;
+  padding: 0 15px;
+  
+  h1{
+    margin: auto;
+  }
+
+  .brand-logo {
+    width: 100px;
+    height: 70px;
+    margin: 5px;
+  }
+
+  ul {
+    @include ul-base;
+  }
+}
+
+.nav {
+  @include flex-column;
+  gap: calc($gap-base / 2);
+  position: relative;
+  height: 100%;
+  margin: auto 50px auto auto;
+
+  &__user, &__navigate{
+    height: 50px;
+    width: 50px;
+  }
+
+  &__navigate--menu,
+  &__user--menu {
+    position: absolute;
+    background: $primary-color;
+    padding: $padding-elem !important;
+    width: 130px;
+
+  }
+
+
+
+  .fa-user,
+  .fa-bars, .profile-picture{
+    display: flex;
+    font-size: 30px;
+    padding: $padding-btn;
+    border-radius: 15%;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid transparent;
+
+    &:hover {
+      border: 1px solid $border-color;
+      color: $border-color;
+    }
+  }
+
+  .profile-picture{
+    position: absolute;
+    top: 0 ;
+    width:50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    padding: 0;
+
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-base;
+    border: 1px solid $border-color;
+    border-radius: $radius-base;
+    right: 0;
+    top: 95px;
+  
+
+    background: $primary-color;
+    color: $text-light;
+
+    li {
+      cursor: pointer;
+      border-bottom: 1px solid transparent;
+
+      &:hover {
+        border-bottom: 1px solid $border-color;
+      }
+    }
+  }
+}

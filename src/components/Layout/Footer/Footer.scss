@@ -1,0 +1,28 @@
+@import "../../../styles/mixins.scss";
+@import "../../../styles/variables.scss";
+
+.footer{
+    @include flex-row;
+    justify-content: space-between;
+    background: $primary-color;
+    padding: $padding-elem;
+    gap: $gap-base;
+    color: $background-color;
+    &__section{
+        width: 40%;
+        padding: $padding-elem;
+        background-color: rgba(128, 128, 128, 0.116);
+
+        &--heading{
+            margin-top: 0;
+            border-bottom: 1px solid;
+            font-weight: 700;
+        }
+    }
+    
+    ul{
+        @include ul-base;
+        @include flex-column;
+        gap: $gap-base;
+    }
+}

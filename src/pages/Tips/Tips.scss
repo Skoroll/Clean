@@ -1,0 +1,15 @@
+ @import "../../styles/mixins.scss";
+ @import "../../styles/variables.scss";
+
+ .tips{
+
+    &-container{
+        @include flex-column;
+        gap: $gap-base;
+    }
+
+    &-container__article{
+        padding: $padding-elem;
+        border: $border-base;
+    }
+}

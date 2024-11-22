@@ -1,0 +1,23 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
+
+
+.contact{
+
+
+    form{
+        @include flex-column;
+        gap: $gap-base;
+        label{
+            @include flex-column;
+            
+        }
+
+        input[type=submit]{
+            background: $secondary-color;
+            border: none;
+            padding: $padding-btn;
+            width: 100px;
+        }
+    }
+}

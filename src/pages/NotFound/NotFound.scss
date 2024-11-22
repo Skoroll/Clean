@@ -1,0 +1,28 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
+
+
+.not-found{
+    @include flex-column;
+    margin: auto;
+
+    &--404{
+        color: $primary-color;
+        font-size: 70px;
+        margin: 0;
+        text-align: center;
+    }
+
+    &--text{
+        color: $primary-color;
+        font-size: 30px;
+        text-align: center;
+        margin-top: 0;
+    }
+
+    &--link{
+        color: $secondary-color;
+        font-weight: 700;
+        margin: auto;
+    }
+}

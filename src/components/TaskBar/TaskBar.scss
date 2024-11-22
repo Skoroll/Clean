@@ -1,0 +1,59 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
+
+.task-bar {
+  position: absolute; /* Positionner la barre tout en haut */
+  display: flex;
+  top: 60px; /* Positionner juste sous le header de 100px de hauteur */
+  left: 10%;
+  width: 70%;
+  height: 50px; /* Hauteur par défaut pour l'animation */
+
+  border: 1px solid $border-color;
+  border-radius: 0 0 calc($radius-base / 2) calc($radius-base / 2);
+  z-index: 500; /* S'assurer qu'il est au-dessus du footer */
+  transition: height 0.3s ease; /* Transition pour l'extension de la barre */
+  margin-bottom: 5px; /* Le slider dépasse de 5px initialement */
+  overflow: hidden; /* Masquer la partie cachée */
+
+  &.open {
+    height: 90px; /* Hauteur de la barre lorsqu'elle est ouverte (ajustée selon le contenu) */
+  }
+
+  &__wrapper {
+    @include flex-row;
+    gap: $gap-base;
+    justify-content: center;
+    padding: 10px;
+    transition: transform 0.3s ease-in-out;
+    width: 100%;
+    align-items: flex-end;
+
+    .fa-solid {
+      padding: $padding-elem;
+      border-radius: $radius-base;
+
+      &:hover {
+        background-color: $border-color;
+        color: $primary-color;
+      }
+    }
+  }
+
+  .task-bar--slider-btn {
+    position: absolute;
+    height: 5px;
+    width: 30%;
+    bottom: 0px; /* Décaler légèrement sous la barre */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: $primary-color;
+    cursor: pointer;
+    z-index: 505;
+    border-radius: $radius-base;
+
+
+  }
+
+ 
+}

@@ -1,0 +1,47 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
+
+.task {
+  margin-top: 50px;
+  &__filter {
+    @include flex-row;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding: $padding-elem;
+    height: 80px;
+    margin-top: 50px;
+
+
+    &:hover li {
+      display: flex;
+      opacity: 1;
+      height: auto; // Permet à l'élément de reprendre sa hauteur
+    }
+
+    .fa-filter {
+      margin: auto;
+    }
+
+    ul {
+      @include ul-base;
+      @include flex-row;
+      gap: calc($gap-base /2);
+      padding: $padding-elem;
+
+      li {
+        display: flex;  // Toujours en flex pour ne pas interrompre l'animation de transition
+        opacity: 0;  // Commence en transparence pour simuler l'animation
+        height: 0;  // Hauteur initiale pour un effet de "glissement"
+        overflow: hidden;  // Pour éviter l'affichage des éléments
+        border: 1px solid $border-color;
+        padding: $padding-btn;
+        transition: opacity 0.3s ease, height 2s ease;
+        cursor: pointer;
+
+        &:hover {
+          background: $light-gray;
+        }
+      }
+    }
+  }
+}

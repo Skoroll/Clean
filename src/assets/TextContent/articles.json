@@ -1,0 +1,15 @@
+[
+    {
+      "id": 1,
+      "title":"Qu'est-ce que CleanHelper ?",
+      "short": "L'appli qui t'aide dans ton ménage",
+      "content": "Crée un compte"
+    },
+    {
+        "id": 2,
+        "title":"Un problème ?",
+        "short": "Contacte nous facilement",
+        "content": "Passe par ici et explique nous ton problème"
+      }
+  ]
+  

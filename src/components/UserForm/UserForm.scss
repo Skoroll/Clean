@@ -1,0 +1,105 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
+
+.form-basic {
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-heading {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .user-form {
+    @include flex-row;
+    gap: 15px;
+    justify-content: center;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    
+
+    &--profile-pic{
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+  
+  label {
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .label-choice{
+    text-align: center;
+  }
+  
+  input {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+
+  }
+  
+  input[type="file"] {
+    padding: 5px;
+  }
+  
+  input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 3px rgba(0, 123, 255, 0.5);
+  }
+  
+  .submit-button {
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: $primary-color;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: auto;
+  }
+  
+  .submit-button:hover {
+    background-color: #0056b3;
+  }
+  
+
+  input[type="checkbox"] {
+    display: none;
+  }
+  
+  /* Style du label */
+  label {
+    cursor: pointer;
+    padding: 8px;
+    background-color: #f0f0f0;
+
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Change la couleur du label lorsque la case est cochée */
+  input[type="checkbox"]:checked + label {
+    background-color: $primary-color; /* Change la couleur de fond, par exemple en vert */
+    color: white; /* Change la couleur du texte */
+  }
+  
+  /* Change la couleur du label au survol */
+  .label-choice:hover {
+    background-color: #e0e0e0;
+  }

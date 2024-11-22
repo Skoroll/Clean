@@ -1,0 +1,31 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
+
+
+.home{
+    padding:$padding-page;
+
+    &__starter{
+        position: relative;
+        display: flex;
+        height: 70vh;
+        img{
+            margin: 0 auto;
+            width: 300px;
+            height: 250px;
+        }
+
+        .fa-arrow-down{
+            position: absolute;
+            bottom: 40%;
+            left: 50%;
+            font-size: 50px;
+            cursor: pointer;
+            transition: color 1s ease;
+
+            &:hover{
+                color: $primary-color;
+            }
+        }
+    }
+}

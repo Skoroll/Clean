@@ -1,0 +1,48 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
+
+.modal-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+
+    &.is-active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .modal {
+        position: relative;
+        width: 50%;
+        height: 50%;
+        background-color: white;
+        border-radius: $radius-base;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        cursor: auto;
+
+        .fa-x {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.2rem;
+
+            cursor: pointer;
+
+            &:hover {
+                transform: scale(1.1);
+
+            }
+        }
+    }
+}
