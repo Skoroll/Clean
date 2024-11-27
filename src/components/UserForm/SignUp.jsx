@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "../../Config/axiosConfig";
 import UserRooms from "./UserRooms";
 import DefineEquipment from "../../pages/DefineEquipments/DefineEquipments";
+import GoBack from "../GoBack/GoBack";
 import "./UserForm.scss";
 
 function SignUp() {
@@ -64,6 +65,8 @@ function SignUp() {
       });
 
       console.log('User created:', response.data);
+      console.log(formData); // Pour vérifier les données envoyées
+
       setSuccess(true);
       alert('Compte créé avec succès !');
       navigate('/sign-in');
@@ -79,12 +82,15 @@ function SignUp() {
   };
 
   return (
+    <div className="form">
+            <GoBack target="/"/>
+      <h1 className="">Créer un compte</h1>
     <div className="form-basic">
-      <p className="form-heading">Créer un compte</p>
       {error && <p className="error-message">{error}</p>}
       {success && <p className="success-message">Compte créé avec succès !</p>}
 
       <form onSubmit={handleSubmit} className="user-form">
+        <p className="form-heading">Pour commencer, qui êtes-vous ?</p>
         <div className="form-group">
           <label htmlFor="name">Nom</label>
           <input
@@ -147,9 +153,10 @@ function SignUp() {
         <UserRooms onRoomsChange={handleRoomsChange} />
         {/*<DefineEquipment onEquipmentsChange={handleEquipmentsChange} />*/}
 
-        <button type="submit" className="submit-button">S'inscrire</button>
+        <button type="submit" className="sign-btn">S'inscrire</button>
       </form>
     </div>
+  </div> 
   );
 }
 

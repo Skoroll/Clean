@@ -6,7 +6,9 @@
     "time": "15 minutes",
     "equipment": "Bureau",
     "frequency": "Hebdomadaire",
-    "what": ["Chiffon", "Poussière"]
+    "what": ["Chiffon", "Poussière"],
+    "isDone": false,
+    "dateDone": ""
   },
   {
     "id": 2,
@@ -15,7 +17,9 @@
     "time": "10 minutes",
     "equipment": "Aspirateur",
     "frequency": "Mensuelle",
-    "what": ["Aspirateur"]
+    "what": ["Aspirateur"],
+    "isDone": false,
+    "dateDone": ""
   },
   {
     "id": 3,
@@ -24,7 +28,9 @@
     "time": "30 minutes",
     "equipment": "Bureau",
     "frequency": "Mensuelle",
-    "what": ["Dossiers", "Classeurs", "Étiquettes"]
+    "what": ["Dossiers", "Classeurs", "Étiquettes"],
+    "isDone": false,
+    "dateDone": ""
   },
   {
     "id": 4,
@@ -33,7 +39,9 @@
     "time": "5 minutes",
     "equipment": "Poubelle",
     "frequency": "Quotidienne",
-    "what": ["Sac poubelle"]
+    "what": ["Sac poubelle"],
+    "isDone": false,
+    "dateDone": ""
   },
   {
     "id": 5,
@@ -42,7 +50,9 @@
     "time": "10 minutes",
     "equipment": "Ordinateur",
     "frequency": "Mensuelle",
-    "what": ["Chiffon microfibre", "Produit nettoyant pour électronique"]
+    "what": ["Chiffon microfibre", "Produit nettoyant pour électronique"],
+    "isDone": false,
+    "dateDone": ""
   },
   {
     "id": 6,
@@ -51,6 +61,8 @@
     "time": "15 minutes",
     "equipment": "Câbles",
     "frequency": "Mensuelle",
-    "what": ["Attaches pour câbles", "Boîte de rangement"]
+    "what": ["Attaches pour câbles", "Boîte de rangement"],
+    "isDone": false,
+    "dateDone": ""
   }
 ]

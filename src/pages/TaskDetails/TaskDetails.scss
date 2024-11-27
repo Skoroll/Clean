@@ -2,6 +2,10 @@
 @import "../../styles/variables.scss";
 
 .tasks {
+  &__subtitle{
+    margin-left: 20px
+  }
+
   form {
     @include flex-column;
     gap: $gap-base;
@@ -27,9 +31,14 @@
     &--tools {
       ul {
         @include flex-row;
+        @include ul-base;
         gap: $gap-base;
-        list-style: none;
-        padding: 0;
+
+        li{
+          background-color: $border-color;
+          padding: $padding-elem
+        }
+
       }
     }
   }
@@ -56,26 +65,56 @@
       }
     }
   }
+  &--equipment{
+    font-weight: 700;
+  }
 }
 
 .task-details__task{
+  position: relative;
     border: 1px solid transparent;
     padding: $padding-elem;
-    transition:  background 1s;
+    transition:  background-color 1s;
     transition: border-radius 1s;
+    
+  .fa-trash{
+    position: absolute;
+    right: 15px;
+    top: 15px;
 
+    &:hover{
+      transform: scale(105%);
+    }
+  }
+
+  &--description{
+    margin: 0 0 20px 0;
+  }
 
     &:hover{
         border: $border-base;
-        background: $border-color;
+        background: $primary-opacity;
         border-radius: $radius-base;
-        transform: scale(102%);
+        
+
+        ul{
+          li{
+            //
+          }
+        }
     }
 }
 
-.tasks-done{
+.task-done{
   &--none{
     font-style: italic;
     margin-left: 40px;
+  }
+
+  &-item{
+    p{
+      background-color: $secondary-opacity;
+      padding: $padding-elem;
+    }
   }
 }

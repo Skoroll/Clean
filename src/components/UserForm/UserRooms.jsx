@@ -27,7 +27,7 @@ function UserRooms({ onRoomsChange }) {
   };
 
   return (
-    <div className="form-basic">
+    <div className="">
       <p className="form-heading">Votre maison comporte :</p>
       <div className="user-form">
         {rooms.map((room) => {

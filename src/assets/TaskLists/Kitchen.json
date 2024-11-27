@@ -6,7 +6,9 @@
     "time": "30 minutes",
     "equipment": "Four",
     "frequency": "Mensuelle",
-    "what": ["Éponge", "Dégraissant", "Chiffon"]
+    "what": ["Éponge", "Dégraissant", "Chiffon"],
+    "isDone": false,
+    "dateDone": ""
   },
   {
     "id": 2,
@@ -15,7 +17,9 @@
     "time": "1 heure",
     "equipment": "Réfrigérateur",
     "frequency": "Trimestrielle",
-    "what": ["Chiffon", "Seau", "Eau chaude"]
+    "what": ["Chiffon", "Seau", "Eau chaude"],
+    "isDone": false,
+    "dateDone": ""
   },
   {
     "id": 3,
@@ -24,7 +28,9 @@
     "time": "20 minutes",
     "equipment": "Lave-vaisselle",
     "frequency": "Mensuelle",
-    "what": ["Produit détergent pour lave-vaisselle", "Éponge"]
+    "what": ["Produit détergent pour lave-vaisselle", "Éponge"],
+    "isDone": false,
+    "dateDone": ""
   },
   {
     "id": 4,
@@ -33,7 +39,9 @@
     "time": "15 minutes",
     "equipment": "Micro-ondes",
     "frequency": "Mensuelle",
-    "what": ["Chiffon", "Dégraissant", "Éponge"]
+    "what": ["Chiffon", "Dégraissant", "Éponge"],
+    "isDone": false,
+    "dateDone": ""
   },
   {
     "id": 5,
@@ -42,7 +50,9 @@
     "time": "10 minutes",
     "equipment": "Blender",
     "frequency": "Après chaque utilisation",
-    "what": ["Éponge", "Liquide vaisselle"]
+    "what": ["Éponge", "Liquide vaisselle"],
+    "isDone": false,
+    "dateDone": ""
   },
   {
     "id": 6,
@@ -51,7 +61,9 @@
     "time": "1 heure",
     "equipment": "Congélateur",
     "frequency": "Trimestrielle",
-    "what": ["Seau", "Chiffon", "Produit anti-givre"]
+    "what": ["Seau", "Chiffon", "Produit anti-givre"],
+    "isDone": false,
+    "dateDone": ""
   },
   {
     "id": 7,
@@ -60,7 +72,9 @@
     "time": "30 minutes",
     "equipment": "Réfrigérateur",
     "frequency": "Mensuelle",
-    "what": ["Chiffon", "Dégraissant", "Seau"]
+    "what": ["Chiffon", "Dégraissant", "Seau"],
+    "isDone": false,
+    "dateDone": ""
   },
   {
     "id": 8,
@@ -69,7 +83,9 @@
     "time": "30 minutes",
     "equipment": "Placards",
     "frequency": "Trimestrielle",
-    "what": ["Chiffon", "Dégraissant"]
+    "what": ["Chiffon", "Dégraissant"],
+    "isDone": false,
+    "dateDone": ""
   },
   {
     "id": 9,
@@ -78,7 +94,9 @@
     "time": "10 minutes",
     "equipment": "Poubelle",
     "frequency": "Quotidienne",
-    "what": ["Sac poubelle"]
+    "what": ["Sac poubelle"],
+    "isDone": false,
+    "dateDone": ""
   },
   {
     "id": 10,
@@ -87,7 +105,9 @@
     "time": "20 minutes",
     "equipment": "Hotte aspirante",
     "frequency": "Mensuelle",
-    "what": ["Produit dégraissant", "Chiffon"]
+    "what": ["Produit dégraissant", "Chiffon"],
+    "isDone": false,
+    "dateDone": ""
   },
   {
     "id": 11,
@@ -96,6 +116,8 @@
     "time": "10 minutes",
     "equipment": "Robinet",
     "frequency": "Mensuelle",
-    "what": ["Produit détartrant", "Chiffon"]
+    "what": ["Produit détartrant", "Chiffon"],
+    "isDone": false,
+    "dateDone": ""
   }
 ]

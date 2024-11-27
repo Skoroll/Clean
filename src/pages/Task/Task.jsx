@@ -4,6 +4,7 @@ import TaskTheme from '../../components/TaskTheme/TaskTheme';
 import Modal from '../../components/Modal/Modal';
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import GoBack from '../../components/GoBack/GoBack';
 import "./Task.scss";
 
 function Task() {
@@ -14,6 +15,7 @@ function Task() {
   }, [pathname]);
   return (
     <div className='task'>
+      <GoBack target="/"/>
       <TaskBar />
       <Modal />
       <TaskTheme />

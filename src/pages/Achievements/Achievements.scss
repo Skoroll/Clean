@@ -1,0 +1,36 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
+
+.achievements{
+
+    .fa-broom{
+        font-size: 40px;
+        padding: $padding-elem;
+        border-right: 1px solid black;
+    }
+
+    ul{
+        @include ul-base;
+        @include flex-column;
+        gap: $gap-base;
+        li{
+            @include flex-row;
+            align-items: center;
+            background: $border-color;
+
+            div{
+                width: calc(100% - 76px);
+            }
+            .achievement--heading, .achievement--detail{
+                margin: 0;
+                padding: 0;
+                padding:  5px 0 5px 10px;
+            }
+            .achievement--heading{
+                font-weight: 700;
+                
+                border-bottom: 1px solid ;
+            }
+        }
+    }
+}

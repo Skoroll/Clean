@@ -63,16 +63,17 @@ function Nav() {
           <ul className="nav__user--menu">
             {user ? (
               <>
+                <li><Link to="succes">Vos succès</Link></li>
                 <li><Link to="/parametres">Paramètres</Link></li>
-                <li><Link to="/vos-equipements">Vos équipements</Link></li>
-                <li
+{/*                <li><Link to="/vos-equipements">Vos équipements</Link></li> */}
+                <li 
                   
                     onClick={() => {
                       localStorage.clear();
                       setUser(null);
                     }}
                   >
-                    Déconnexion
+                   <Link to="/"> Déconnexion</Link>
                   
                 </li>
               </>
@@ -93,6 +94,7 @@ function Nav() {
             <li><Link to="/">Accueil</Link></li>
             <li><Link to="/votre-menage">Votre ménage</Link></li>
             <li><Link to="/conseils">Nos conseils</Link></li>
+            <li><Link to="/partenaires">Nos partenaires</Link></li>
             <li><Link to="/contact">Nous contacter</Link></li>
             <li><Link to="/FAQ">FAQ</Link></li>
             <li><Link to="a-propos">A propos</Link></li>

@@ -1,31 +1,72 @@
 @import "../../styles/mixins.scss";
 @import "../../styles/variables.scss";
 
+.home {
+  .ref {
+    height: 105px;
+  }
 
-.home{
-    padding:$padding-page;
+  &__starter {
+    @include flex-column;
+    position: relative;
+    display: flex;
+    height: 68vh;
+    cursor: pointer;
 
-    &__starter{
-        position: relative;
-        display: flex;
-        height: 70vh;
-        img{
-            margin: 0 auto;
-            width: 300px;
-            height: 250px;
-        }
+    &:hover {
+      .home__starter--call {
+        opacity: 0%;
+      }
 
-        .fa-arrow-down{
-            position: absolute;
-            bottom: 40%;
-            left: 50%;
-            font-size: 50px;
-            cursor: pointer;
-            transition: color 1s ease;
-
-            &:hover{
-                color: $primary-color;
-            }
-        }
+      img {
+        margin-top: 50px;
+        width: 400px;
+        height: 350px;
+      }
     }
+    img {
+      margin: 0 auto;
+      width: 300px;
+      height: 250px;
+      transition: height 1s ease, width 1s ease, margin 1s ease;
+    }
+
+    &--call {
+      cursor: pointer;
+      padding: $padding-elem;
+      @include flex-column;
+      transition: opacity 1s ease;
+
+      h1 {
+        text-align: center;
+      }
+
+      .fa-arrow-down {
+        margin: auto;
+        margin-top: 30px;
+        font-size: 50px;
+        color: $primary-color;
+      }
+    }
+  }
+
+  &__content__sign {
+    @include flex-column;
+    gap: $gap-base;
+
+    &--up,
+    &--in {
+      @include flex-column;
+      margin-bottom: $padding-page;
+      border: $border-base;
+      padding: $padding-elem;
+      h2 {
+        margin: 0;
+      }
+    }
+  }
+}
+
+.sign-btn {
+  @include base-btn;
 }

@@ -12,10 +12,10 @@ function Settings() {
   return (
     <div className='settings'>
       <div className="form-basic">
-        <p className="form-heading">Paramètres</p>
+        <h1 className="form-heading">Paramètres</h1>
 
-        <div className='settings__options'>
-
+        <div className='form settings__options'>
+          <div className='form-basic'>
         <div className="settings__options--param">
           <label>Nom<input type="text" /></label>
           </div>
@@ -37,7 +37,10 @@ function Settings() {
           </div>
 
         <p className='dangerous'>Supprimer le compte</p>
+        <p className="dangerous">Réinitialiser les tâches</p>
+        <p className="dangerous">Redéfinir les pièces</p>
 
+        </div>
         </div>
       </div>
     </div>

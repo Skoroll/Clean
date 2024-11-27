@@ -16,3 +16,18 @@
   display: flex;
   flex-direction: column;
 }
+
+@mixin base-btn {
+  border: $border-base;
+  padding: $padding-elem;
+  background: $primary-color;
+  color: $text-light;
+  font-size: large;
+  border-radius: $radius-btn;
+  border: none;
+  margin: auto;
+
+  &:hover{
+    box-shadow: $shadow;
+  }
+}

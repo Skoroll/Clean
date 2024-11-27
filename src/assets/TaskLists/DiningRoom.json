@@ -6,7 +6,9 @@
     "time": "10 minutes",
     "equipment": "Table basse",
     "frequency": "Hebdomadaire",
-    "what": ["Chiffon", "Désinfectant", "Éponge"]
+    "what": ["Chiffon", "Désinfectant", "Éponge"],
+    "isDone": false,
+    "dateDone": ""
   },
   {
     "id": 2,
@@ -15,7 +17,9 @@
     "time": "15 minutes",
     "equipment": "Chaises",
     "frequency": "Mensuelle",
-    "what": ["Chiffon", "Produit nettoyant"]
+    "what": ["Chiffon", "Produit nettoyant"],
+    "isDone": false,
+    "dateDone": ""
   },
   {
     "id": 3,
@@ -24,7 +28,9 @@
     "time": "20 minutes",
     "equipment": "Meubles",
     "frequency": "Mensuelle",
-    "what": ["Chiffon", "Dépoussiérant"]
+    "what": ["Chiffon", "Dépoussiérant"],
+    "isDone": false,
+    "dateDone": ""
   },
   {
     "id": 4,
@@ -33,7 +39,9 @@
     "time": "20 minutes",
     "equipment": "Sol",
     "frequency": "Hebdomadaire",
-    "what": ["Serpillière", "Seau d'eau"]
+    "what": ["Serpillière", "Seau d'eau"],
+    "isDone": false,
+    "dateDone": ""
   },
   {
     "id": 5,
@@ -42,7 +50,9 @@
     "time": "10 minutes",
     "equipment": "Fenêtres",
     "frequency": "Quotidienne",
-    "what": ["Fenêtres ouvertes"]
+    "what": ["Fenêtres ouvertes"],
+    "isDone": false,
+    "dateDone": ""
   },
   {
     "id": 6,
@@ -51,7 +61,9 @@
     "time": "30 minutes",
     "equipment": "Rideaux",
     "frequency": "Trimestrielle",
-    "what": ["Machine à laver", "Détergent"]
+    "what": ["Machine à laver", "Détergent"],
+    "isDone": false,
+    "dateDone": ""
   },
   {
     "id": 7,
@@ -60,7 +72,9 @@
     "time": "5 minutes",
     "equipment": "Poubelle",
     "frequency": "Hebdomadaire",
-    "what": ["Sac poubelle"]
+    "what": ["Sac poubelle"],
+    "isDone": false,
+    "dateDone": ""
   },
   {
     "id": 8,
@@ -69,7 +83,9 @@
     "time": "15 minutes",
     "equipment": "Luminaires",
     "frequency": "Trimestrielle",
-    "what": ["Chiffon", "Dépoussiérant"]
+    "what": ["Chiffon", "Dépoussiérant"],
+    "isDone": false,
+    "dateDone": ""
   },
   {
     "id": 9,
@@ -78,6 +94,8 @@
     "time": "20 minutes",
     "equipment": "Vitres",
     "frequency": "Mensuelle",
-    "what": ["Produit pour vitres", "Chiffon microfibre"]
+    "what": ["Produit pour vitres", "Chiffon microfibre"],
+    "isDone": false,
+    "dateDone": ""
   }
 ]

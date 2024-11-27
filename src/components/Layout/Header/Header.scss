@@ -7,7 +7,7 @@
   top: 0;
   width: 100%;
   background: $primary-color;
-  z-index: 800;
+  z-index: 899;
   padding: 0 15px;
   
   h1{
@@ -58,6 +58,7 @@
     align-items: center;
     cursor: pointer;
     border: 1px solid transparent;
+    transition: border-color 0.3s ease, color 0.3s ease;
 
     &:hover {
       border: 1px solid $border-color;
@@ -92,9 +93,12 @@
     li {
       cursor: pointer;
       border-bottom: 1px solid transparent;
+      padding: $padding-btn;
+      text-align: center;
 
       &:hover {
-        border-bottom: 1px solid $border-color;
+        background: $secondary-opacity;
+       
       }
     }
   }

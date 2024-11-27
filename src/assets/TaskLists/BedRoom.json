@@ -3,10 +3,12 @@
     "id": 1,
     "name": "Faire le lit",
     "description": "Changer les draps et refaire le lit.",
-    "time": "15 minutes",
+    "time": "10 minutes",
     "equipment": "Lit",
     "frequency": "Hebdomadaire",
-    "what": ["Draps", "Oreillers"]
+    "what": ["Draps", "Oreillers"],
+    "isDone": false,
+    "dateDone": ""
   },
   {
     "id": 2,
@@ -15,7 +17,9 @@
     "time": "15 minutes",
     "equipment": "Aspirateur",
     "frequency": "Hebdomadaire",
-    "what": ["Aspirateur"]
+    "what": ["Aspirateur"],
+    "isDone": false,
+    "dateDone": ""
   },
   {
     "id": 3,
@@ -24,34 +28,31 @@
     "time": "20 minutes",
     "equipment": "Commode",
     "frequency": "Mensuelle",
-    "what": ["Chiffon", "Poussière"]
-  },
-  {
-    "id": 4,
-    "name": "Changer les draps du lit",
-    "description": "Remplacer les draps pour des propres.",
-    "time": "10 minutes",
-    "equipment": "Lit",
-    "frequency": "Hebdomadaire",
-    "what": ["Draps propres"]
+    "what": ["Chiffon", "Poussière"],
+    "isDone": false,
+    "dateDone": ""
   },
   {
     "id": 5,
     "name": "Laver les rideaux",
     "description": "Laver les rideaux pour enlever la poussière et les taches.",
-    "time": "30 minutes",
+    "time": "5 minutes",
     "equipment": "Rideaux",
     "frequency": "Trimestrielle",
-    "what": ["Machine à laver", "Détergent"]
+    "what": ["Machine à laver", "Détergent"],
+    "isDone": false,
+    "dateDone": ""
   },
   {
     "id": 6,
     "name": "Vider les poubelles",
     "description": "Vider la poubelle de la chambre pour éviter les mauvaises odeurs.",
-    "time": "5 minutes",
+    "time": "2 minutes",
     "equipment": "Poubelle",
     "frequency": "Hebdomadaire",
-    "what": ["Sac poubelle"]
+    "what": ["Sac poubelle"],
+    "isDone": false,
+    "dateDone": ""
   },
   {
     "id": 7,
@@ -60,16 +61,20 @@
     "time": "10 minutes",
     "equipment": "Chambre",
     "frequency": "Quotidienne",
-    "what": ["Fenêtres ouvertes"]
+    "what": ["Fenêtres ouvertes"],
+    "isDone": false,
+    "dateDone": ""
   },
   {
     "id": 8,
     "name": "Nettoyer les sols",
     "description": "Laver le sol de la chambre à l'aide d'un balai ou d'une serpillère.",
-    "time": "20 minutes",
+    "time": "5 minutes",
     "equipment": "Sol",
     "frequency": "Mensuelle",
-    "what": ["Serpillière", "Seau d'eau"]
+    "what": ["Serpillière", "Seau d'eau"],
+    "isDone": false,
+    "dateDone": ""
   },
   {
     "id": 9,
@@ -78,15 +83,19 @@
     "time": "15 minutes",
     "equipment": "Armoire",
     "frequency": "Hebdomadaire",
-    "what": ["Vêtements", "Penderie"]
+    "what": ["Vêtements", "Penderie"],
+    "isDone": false,
+    "dateDone": ""
   },
   {
     "id": 10,
     "name": "Nettoyer les lampes",
     "description": "Essuyer les lampes et les abat-jours pour enlever la poussière.",
-    "time": "10 minutes",
+    "time": "5 minutes",
     "equipment": "Lampes",
     "frequency": "Mensuelle",
-    "what": ["Chiffon", "Produit pour lampes"]
+    "what": ["Chiffon", "Produit pour lampes"],
+    "isDone": false,
+    "dateDone": ""
   }
 ]

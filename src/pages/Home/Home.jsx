@@ -4,7 +4,7 @@ import logoCleanHelper from "../../assets/logo.png";
 import Articles from '../../components/Articles/Articles';
 import articlesText from "../../assets/TextContent/articles.json";
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import "./Home.scss";
 
 function Home() {
@@ -21,12 +21,32 @@ function Home() {
 
   return (
     <div className='home'>
-      <div className='home__starter'>
+      <div className='home__starter'  onClick={scrollDown}>
         <img src={logoCleanHelper} alt='Cliquer pour continuer' />
-        <i className="fa-solid fa-arrow-down" onClick={scrollDown}></i>
+        <div className='home__starter--call'>
+          <h1>Découvrir CleanHelper ?</h1>
+          <i className="fa-solid fa-arrow-down"  />
+        </div>
+        
       </div>
-
-      <div className='home__content' ref={sectionRef}>
+      <div className='ref' ref={sectionRef}/>
+      <div className='home__content' >
+      <div className="home__content__sign" >
+        <div className="home__content__sign--up">
+          <h2>Créez votre compte</h2>
+          <p>Pour utiliser CleanHelper vous devez créer un compte
+            <br /> Pas d'inquiètudes, c'est gratuit !
+          </p>
+            <Link to="sign-up" className="sign-btn">Je crée mon compte</Link>
+        </div>
+        <div className="home__content__sign--in">
+        <h2>Se connecter</h2>
+          <p>Une fois connecté, organiser votre ménage comme bon vous semble.
+            <br /> Vous allez y arriver, on croit en vous !
+          </p>
+            <Link to="sign-in" className="sign-btn">Je me connecte</Link>
+        </div>
+      </div>
       <div className='articles__wrapper'>
         {articlesText.map((articles) =>(
           <Articles key={articles.id} articles={articles} />

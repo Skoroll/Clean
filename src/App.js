@@ -2,6 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Layout/Header/Header.';
 import Footer from './components/Layout/Footer/Footer';
+import Partner from './pages/Partner/Partner';
+import Achievements from './pages/Achievements/Achievements';
 import Home from './pages/Home/Home';
 import Contact from './pages/Contact/Contact';
 import Settings from './pages/Settings/Settings';
@@ -45,6 +47,8 @@ function App() {
               <Route path="/conditions" element={<Terms />} />
               <Route path="/confidentialite" element={<Confidential />} />
               <Route path="/legal" element={<Legal />} />
+              <Route path="/succes" element={<Achievements />} />
+              <Route path="/partenaires" element={<Partner />} />
             </Routes>
           </main>
           <Footer />

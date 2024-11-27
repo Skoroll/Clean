@@ -6,7 +6,9 @@
     "time": "10 minutes",
     "equipment": "Toilettes",
     "frequency": "Hebdomadaire",
-    "what": ["Produit pour WC", "Brosse à WC"]
+    "what": ["Produit pour WC", "Brosse à WC"],
+    "isDone": false,
+    "dateDone": ""
   },
   {
     "id": 2,
@@ -15,7 +17,9 @@
     "time": "10 minutes",
     "equipment": "Lavabo",
     "frequency": "Hebdomadaire",
-    "what": ["Éponge", "Produit détartrant"]
+    "what": ["Éponge", "Produit détartrant"],
+    "isDone": false,
+    "dateDone": ""
   },
   {
     "id": 3,
@@ -24,7 +28,9 @@
     "time": "5 minutes",
     "equipment": "Miroir de salle de bain",
     "frequency": "Hebdomadaire",
-    "what": ["Produit pour vitres", "Chiffon microfibre"]
+    "what": ["Produit pour vitres", "Chiffon microfibre"],
+    "isDone": false,
+    "dateDone": ""
   },
   {
     "id": 4,
@@ -33,7 +39,9 @@
     "time": "5 minutes",
     "equipment": "Poubelle",
     "frequency": "Quotidienne",
-    "what": ["Sac poubelle"]
+    "what": ["Sac poubelle"],
+    "isDone": false,
+    "dateDone": ""
   },
   {
     "id": 5,
@@ -42,6 +50,8 @@
     "time": "15 minutes",
     "equipment": "Sol",
     "frequency": "Hebdomadaire",
-    "what": ["Balai", "Serpillière", "Produit nettoyant"]
+    "what": ["Balai", "Serpillière", "Produit nettoyant"],
+    "isDone": false,
+    "dateDone": ""
   }
 ]

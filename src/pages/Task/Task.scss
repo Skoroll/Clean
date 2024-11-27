@@ -2,7 +2,7 @@
 @import "../../styles/variables.scss";
 
 .task {
-  margin-top: 50px;
+
   &__filter {
     @include flex-row;
     flex-wrap: nowrap;

@@ -1,6 +1,9 @@
 // Primary Colors
 $primary-color: #4a90e2;         // Bleu doux pour les accents principaux
 $secondary-color: #9ae7c5;       // Vert doux pour un contraste harmonieux
+$primary-opacity: #4a91e23a;
+$secondary-opacity: #9ae7c66e;
+
 
 // Neutrals
 $background-color: #f3f2f2;      // Fond blanc pour la clarté et la simplicité
@@ -31,5 +34,6 @@ $gap-base : 10px;
 
 //Border
 $radius-base: 15px;
+$radius-btn: 5px;
 $border-base: 1px solid $border-color;
-$shadow : 10px 10px 5px 0px rgba(0,0,0,0.75);
+$shadow : 2px 2px 2px 0px rgba(0,0,0,0.75);

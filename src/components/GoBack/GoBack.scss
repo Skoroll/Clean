@@ -1,0 +1,28 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
+
+.go-back {
+    margin: auto 0;
+    color: $primary-color;
+    font-style: italic;
+    font-size: large;
+    border-bottom: 1px solid transparent; 
+    transition: border-bottom-color 1s ease;
+    width: 155px;
+    &:hover {
+        border-bottom-color: $primary-color; 
+    }
+}
+
+.back-div{
+    @include flex-column;
+    margin-bottom: 20px;
+    position: fixed;
+    width: 97%;
+    background-color: $background-color;
+    z-index: 850;
+    top: 105px;
+    left: 0;
+    height: 20px;
+    padding: $padding-elem;
+}

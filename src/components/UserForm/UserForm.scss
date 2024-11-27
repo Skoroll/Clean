@@ -1,6 +1,7 @@
 @import "../../styles/mixins.scss";
 @import "../../styles/variables.scss";
 
+.form{
 .form-basic {
     margin: 20px auto;
     padding: 20px;
@@ -8,6 +9,9 @@
     border-radius: 8px;
     background-color: #f9f9f9;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 50%;
+    min-width: 300px;
   }
   
   .form-heading {
@@ -19,16 +23,14 @@
   }
   
   .user-form {
-    @include flex-row;
+    @include flex-column;
     gap: 15px;
     justify-content: center;
   }
   
   .form-group {
     display: flex;
-    flex-direction: column;
-    width: 45%;
-    
+    flex-direction: column;   
 
     &--profile-pic{
       max-width: 100%;
@@ -103,3 +105,4 @@
   .label-choice:hover {
     background-color: #e0e0e0;
   }
+}
