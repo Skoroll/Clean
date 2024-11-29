@@ -2,13 +2,13 @@
 @import "../../styles/variables.scss";
 
 .task-bar {
-  position: absolute; /* Positionner la barre tout en haut */
+  position: fixed; /* Positionner la barre tout en haut */
   display: flex;
-  top: 60px; /* Positionner juste sous le header de 100px de hauteur */
-  left: 10%;
+  top: 105px; /* Positionner juste sous le header de 100px de hauteur */
+  left: 15%;
   width: 70%;
   height: 50px; /* Hauteur par défaut pour l'animation */
-
+  background-color: $background-color;
   border: 1px solid $border-color;
   border-radius: 0 0 calc($radius-base / 2) calc($radius-base / 2);
   z-index: 500; /* S'assurer qu'il est au-dessus du footer */

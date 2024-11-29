@@ -13,11 +13,21 @@
             
         }
 
-        input[type=submit]{
-            background: $secondary-color;
-            border: none;
-            padding: $padding-btn;
-            width: 100px;
+        input[type=textarea]{
+            height: 300px;
         }
+
+        input[type=submit]{
+            border: none;
+            margin: auto
+        }
+    }
+
+    ul{
+        @include ul-base;
+        @include flex-column;
+        padding: $padding-elem;
+        
+        gap: $gap-base;
     }
 }

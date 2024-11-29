@@ -3,10 +3,21 @@
 
 .achievements{
 
-    .fa-broom{
+    .fa-solid{
         font-size: 40px;
         padding: $padding-elem;
         border-right: 1px solid black;
+    }
+    .fa-bed{
+        font-size: 36px
+    }
+
+    .fa-sun{
+        font-size: 45px
+    }
+
+    .fa-moon{
+        font-size: 60px
     }
 
     ul{

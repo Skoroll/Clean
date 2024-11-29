@@ -2,6 +2,7 @@ import React from 'react';
 import tipsText from "../../assets/TextContent/tips.json";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import Collapses from '../../components/Collapses/Collapses';
 import "./Tips.scss";
 
 function Tips() {
@@ -12,17 +13,20 @@ function Tips() {
   }, [pathname]);
   return (
     <div className='tips'>
-      <p>Découvrez vos conseils pour simplifier votre ménage :</p>
+      <h1>Découvrez vos conseils pour simplifier votre ménage :</h1>
       
       <div className='tips-container'>
         {tipsText.map((tips) => (
           <article className='tips-container__article' key={tips.id}>
-            <h2>{tips.title}</h2>
+            <Collapses title={tips.title}>
             <div className='tips-container__article--tips'>
+              <ul>
               {tips.tips.map((tip, index) => (
-                <p key={index}>{tip}</p>
+                <li key={index}>{tip}</li>
               ))}
+              </ul>
             </div>
+            </Collapses >
           </article>
         ))}
       </div>

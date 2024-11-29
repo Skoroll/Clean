@@ -13,7 +13,7 @@ function Nav() {
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     }
-  }, []);
+  }, [setUser]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -28,23 +28,26 @@ function Nav() {
       }
     };
 
-    // Ajouter l'écouteur d'événements
     document.addEventListener('click', handleClickOutside);
 
-    // Nettoyer l'écouteur d'événements lors du démontage
     return () => {
       document.removeEventListener('click', handleClickOutside);
     };
   }, []);
 
   const toggleUserMenu = (event) => {
-    event.stopPropagation(); // Empêche le clic de fermer immédiatement le menu
+    event.stopPropagation();
     setUserMenuOpen((prev) => !prev);
   };
 
   const toggleNavigateMenu = (event) => {
-    event.stopPropagation(); // Empêche le clic de fermer immédiatement le menu
+    event.stopPropagation();
     setNavigateMenuOpen((prev) => !prev);
+  };
+
+  const handleLogout = () => {
+    localStorage.clear();
+    setUser(null);
   };
 
   return (
@@ -65,17 +68,7 @@ function Nav() {
               <>
                 <li><Link to="succes">Vos succès</Link></li>
                 <li><Link to="/parametres">Paramètres</Link></li>
-{/*                <li><Link to="/vos-equipements">Vos équipements</Link></li> */}
-                <li 
-                  
-                    onClick={() => {
-                      localStorage.clear();
-                      setUser(null);
-                    }}
-                  >
-                   <Link to="/"> Déconnexion</Link>
-                  
-                </li>
+                <li onClick={handleLogout}><Link to="/">Déconnexion</Link></li>
               </>
             ) : (
               <>
@@ -97,7 +90,7 @@ function Nav() {
             <li><Link to="/partenaires">Nos partenaires</Link></li>
             <li><Link to="/contact">Nous contacter</Link></li>
             <li><Link to="/FAQ">FAQ</Link></li>
-            <li><Link to="a-propos">A propos</Link></li>
+            <li><Link to="/a-propos">À propos</Link></li>
           </ul>
         )}
       </div>

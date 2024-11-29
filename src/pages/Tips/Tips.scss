@@ -10,6 +10,11 @@
 
     &-container__article{
         padding: $padding-elem;
-        border: $border-base;
+    }
+
+    ul{
+        @include flex-column;
+        list-style: square;
+        gap: $gap-base;
     }
 }

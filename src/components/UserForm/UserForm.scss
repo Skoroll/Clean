@@ -2,6 +2,8 @@
 @import "../../styles/variables.scss";
 
 .form{
+  @include flex-column;
+  gap: $gap-base;
 .form-basic {
     margin: 20px auto;
     padding: 20px;
@@ -33,8 +35,9 @@
     flex-direction: column;   
 
     &--profile-pic{
-      max-width: 100%;
+      max-width: 200px;
       max-height: 100%;
+      margin: 20px auto;
     }
   }
   

@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import axiosInstance from "../../Config/axiosConfig";
 import Spinner from "../../components/Spinner/Spinner";
 import GoBack from "../../components/GoBack/GoBack";
+import { useLocation } from "react-router-dom";
+import Collapses from "../../components/Collapses/Collapses";
 import "./TaskDetails.scss";
 
 function TaskDetails() {
@@ -11,6 +13,11 @@ function TaskDetails() {
   const [completedTasks, setCompletedTasks] = useState([]); // Liste des tâches terminées
   const [loading, setLoading] = useState(true); // État de chargement
   const [error, setError] = useState(null); // Message d'erreur en cas de problème
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, [pathname]);
 
   // Fonction de récupération des tâches terminées
   const fetchCompletedTasks = async () => {
@@ -84,45 +91,43 @@ function TaskDetails() {
       ) : tasks.length > 0 ? (
         <div className="task-details">
           {tasks.map((task) => (
-            <div
-              key={task._id}
-              onClick={() => markAsDone(task._id)}
-              className="task-details__task"
-            >
-              <i className="fa-solid fa-trash"></i>
-              <div className="task-details--block">
-                <p className="task-details__task--heading">
-                  <i className="fa-solid fa-arrow-right"></i>
-                  <span className="task-details__task--name"> {task.name}</span>
+            <Collapses title={task.name} icon={<i className="fa-solid fa-check" onClick={() => markAsDone(task._id)}></i>
+         
+            }  >
+              <div
+                key={task._id}
+                className="task-details__task"
+              >
+                <i className="fa-solid fa-trash"></i>
+                <div className="task-details--block">
+                  <div className="task-details__task--div-time">
+                    <p className="tasks-details__task--time">
+                      <i className="fa-regular fa-clock"></i>
+                      <span> {task.time}</span>
+                    </p>
+                    <p className="task-details__task--frequency">
+                      <i className="fa-solid fa-calendar"></i>
+                      <span className="tasks-details__task--frequency">
+                        {" "}
+                        {task.frequency}
+                      </span>
+                    </p>
+                  </div>
+                </div>
+                <p className="task-details__task--description">
+                  <span> {task.description}</span>
                 </p>
-
-                <div className="task-details__task--div-time">
-                  <p className="tasks-details__task--time">
-                    <i className="fa-regular fa-clock"></i>
-                    <span> {task.time}</span>
-                  </p>
-                  <p className="task-details__task--frequency">
-                    <i className="fa-solid fa-calendar"></i>
-                    <span className="tasks-details__task--frequency">
-                      {" "}
-                      {task.frequency}
-                    </span>
-                  </p>
+                <div className="task-details__task--tools">
+                  {task.what && task.what.length > 0 && (
+                    <ul>
+                      {task.what.map((item, index) => (
+                        <li key={index}>{item}</li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               </div>
-              <p className="task-details__task--description">
-                <span> {task.description}</span>
-              </p>
-              <div className="task-details__task--tools">
-                {task.what && task.what.length > 0 && (
-                  <ul>
-                    {task.what.map((item, index) => (
-                      <li key={index}>{item}</li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            </div>
+            </Collapses>
           ))}
         </div>
       ) : (

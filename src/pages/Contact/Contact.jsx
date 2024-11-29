@@ -11,13 +11,14 @@ function Contact() {
   }, [pathname]);
   return (
     <div className='contact'>
-      <p className="contact--heading">Pour nous contacter</p>
+      <h1 className="contact--heading">Pour nous contacter</h1>
       <ul>
-        <li>Email : mail@mail.fr</li>
-        <li>Téléphone : 00 00 00 00 00</li>
+        <li><i className='fa-solid fa-envelope' /> contact.skorol@gmail.com</li>
+        <li><i className='fa-solid fa-phone' /> 00 00 00 00 00</li>
       </ul>
 
-      <form action="">
+      <form className='form' action="">
+        <div className='form-basic'>
         <label htmlFor="name">Nom
         <input type="text" id='name' /></label>
 
@@ -29,8 +30,10 @@ function Contact() {
           <input type="textarea" id='message' />
         </label>
 
-        <input type="submit" />
+        <input className='sign-btn' type="submit" />
+        </div>
       </form>
+      
     </div>
   );
 }

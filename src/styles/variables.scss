@@ -1,39 +1,42 @@
 // Primary Colors
-$primary-color: #4a90e2;         // Bleu doux pour les accents principaux
-$secondary-color: #9ae7c5;       // Vert doux pour un contraste harmonieux
+$primary-color: #4a90e2; // Bleu doux pour les accents principaux
+$secondary-color: #9ae7c5; // Vert doux pour un contraste harmonieux
 $primary-opacity: #4a91e23a;
 $secondary-opacity: #9ae7c66e;
 
-
 // Neutrals
-$background-color: #f3f2f2;      // Fond blanc pour la clarté et la simplicité
-$light-gray: #f0f4f8;            // Gris très clair pour les fonds ou les zones subtiles
-$medium-gray: #cbd5e0;           // Gris moyen pour les bordures ou les séparations
-$dark-gray: #4a5568;             // Gris foncé pour le texte ou les éléments importants
+$background-color: #f3f2f2; // Fond blanc pour la clarté et la simplicité
+$light-gray: #f0f4f8; // Gris très clair pour les fonds ou les zones subtiles
+$medium-gray: #cbd5e0; // Gris moyen pour les bordures ou les séparations
+$dark-gray: #4a5568; // Gris foncé pour le texte ou les éléments importants
 
 // Status Colors (pour les icônes de statut ou notifications)
-$success-color: #34c759;         // Vert clair pour les états réussis (ex : tâches complétées)
-$warning-color: #ffcc00;         // Jaune pour les avertissements ou rappels
-$error-color: #ff3b30;           // Rouge pour les erreurs ou notifications importantes
+$success-color: #34c759; // Vert clair pour les états réussis (ex : tâches complétées)
+$warning-color: #ffcc00; // Jaune pour les avertissements ou rappels
+$error-color: #ff3b30; // Rouge pour les erreurs ou notifications importantes
 
 // Shadows and Borders
-$shadow-color: rgba(0, 0, 0, 0.1); // Ombre douce pour les cartes ou les éléments en survol
-$border-color: #e2e8f0;           // Gris très léger pour les bordures
+$shadow-color: rgba(
+  0,
+  0,
+  0,
+  0.1
+); // Ombre douce pour les cartes ou les éléments en survol
+$border-color: #e2e8f0; // Gris très léger pour les bordures
 
 // Text Colors
-$text-primary: #2d3748;          // Couleur de texte principale (gris foncé)
-$text-secondary: #718096;        // Couleur de texte secondaire (gris moyen)
-$text-light: #d6d7da;            // Couleur de texte pour les éléments peu importants
-
+$text-primary: #2d3748; // Couleur de texte principale (gris foncé)
+$text-secondary: #718096; // Couleur de texte secondaire (gris moyen)
+$text-light: #f5f5f5; // Couleur de texte pour les éléments peu importants
 
 //Spacing
-$padding-btn : 5px 10px;
-$padding-page: 20px; 
+$padding-btn: 5px 10px;
+$padding-page: 20px;
 $padding-elem: 10px 15px;
-$gap-base : 10px;
+$gap-base: 10px;
 
 //Border
 $radius-base: 15px;
 $radius-btn: 5px;
 $border-base: 1px solid $border-color;
-$shadow : 2px 2px 2px 0px rgba(0,0,0,0.75);
+$shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.75);

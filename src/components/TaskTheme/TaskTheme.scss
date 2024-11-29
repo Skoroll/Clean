@@ -3,16 +3,22 @@
 
 .task-theme{
     @include flex-row;
+    margin-top: 55px;
     gap: $gap-base;
     justify-content: center;
+    
+    a{
+        width: 35%;
+        /*25% pour écran large*/
+    }
 
     &__card{
-        width: 35%;
-        min-width: 230px;
+        @include flex-column;
+        height: 200px;
         border: $border-base;
         padding: $padding-elem;
         transition: box-shadow 1s;
-        
+        justify-content: space-between;
 
         &:hover{
             box-shadow:  10px 10px 25px -5px rgba(0,0,0,0.75);
@@ -25,15 +31,14 @@
            text-align: center;
         }
 
-        &--image{
-            font-size: 70px;
-            text-align: center;
+        img{
+            height: 100px;
+            width: 100px;
+            margin: auto;
         }
 
         &--counter{
-            display: flex;
-            flex-direction: column;
-            text-align: center;
+text-align: center;
         }
     }
 }

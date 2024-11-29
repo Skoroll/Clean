@@ -2,8 +2,8 @@
 @import "../../styles/variables.scss";
 
 .tasks {
-  &__subtitle{
-    margin-left: 20px
+  &__subtitle {
+    margin-left: 20px;
   }
 
   form {
@@ -14,11 +14,10 @@
   &-details__task {
     &--frequency,
     &--time {
-
       font-style: italic;
     }
   }
-  
+
   &__divider {
     width: 80%;
     margin: $gap-base auto auto auto;
@@ -34,11 +33,12 @@
         @include ul-base;
         gap: $gap-base;
 
-        li{
+        li {
           background-color: $border-color;
-          padding: $padding-elem
+          padding: $padding-btn;
+          font-size: 15px;
+          border-radius: $radius-base;
         }
-
       }
     }
   }
@@ -55,66 +55,83 @@
         align-items: flex-start;
       }
       &--div-time {
-        width: 45%;
-        @include flex-column;
+        @include flex-row;
+        gap: $gap-base;
+        padding: $padding-btn;
+        justify-content: space-between;
+        width: 100%;
 
         .tasks-details__task--time,
         .task-details__task--frequency {
-          margin: auto 0 auto auto;
+          margin: auto 0;
         }
       }
     }
   }
-  &--equipment{
+  &--equipment {
     font-weight: 700;
   }
 }
 
-.task-details__task{
+.task-details__task {
   position: relative;
-    border: 1px solid transparent;
-    padding: $padding-elem;
-    transition:  background-color 1s;
-    transition: border-radius 1s;
-    
-  .fa-trash{
-    position: absolute;
-    right: 15px;
-    top: 15px;
+  border: 1px solid transparent;
+  padding: $padding-elem;
+  transition: background-color 1s;
+  transition: border-radius 1s;
 
-    &:hover{
-      transform: scale(105%);
-    }
+
+  &--description {
+    margin: 20px 0;
+    padding: $padding-page;
+    font-style: italic;
+    font-size: 15px;
+    width: 80%;
   }
 
-  &--description{
-    margin: 0 0 20px 0;
+  &:hover {
+    border: $border-base;
+    background: $primary-opacity;
+    border-radius: $radius-base;
   }
-
-    &:hover{
-        border: $border-base;
-        background: $primary-opacity;
-        border-radius: $radius-base;
-        
-
-        ul{
-          li{
-            //
-          }
-        }
-    }
 }
 
-.task-done{
-  &--none{
+.task-done {
+  &--none {
     font-style: italic;
     margin-left: 40px;
   }
 
-  &-item{
-    p{
+  &-item {
+    p {
       background-color: $secondary-opacity;
       padding: $padding-elem;
     }
   }
+}
+
+.collapse{
+
+
+.fa-trash,
+.fa-check {
+
+  right: 15px;
+  cursor: pointer;
+  padding: $padding-btn;
+  color: $primary-color;
+
+  &:hover {
+    transform: scale(110%);
+  }
+}
+
+.fa-trash {
+  top: 60%;
+  position: absolute;
+}
+
+.fa-check {
+  top: 40%;
+}
 }
