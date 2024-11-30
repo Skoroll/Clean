@@ -54,10 +54,14 @@
   &__content__sign {
     @include flex-column;
     gap: $gap-base;
+    @include flex-row;
+    justify-content: space-around;
+
 
     &--up,
     &--in {
       @include flex-column;
+      width: 40%;
       margin-bottom: $padding-page;
       border: $border-base;
       padding: $padding-elem;

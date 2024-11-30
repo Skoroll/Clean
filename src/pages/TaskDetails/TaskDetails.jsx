@@ -39,14 +39,14 @@ function TaskDetails() {
       setLoading(true);
       const response = await axiosInstance.get(`/tasks/by-room?rooms=${roomName}`);
       const filteredTasks = response.data.filter(task => task.room === roomName);
-
+  
       // Séparer les tâches en fonction de leur état (non terminées ou terminées)
       const globalTasks = filteredTasks.filter(task => task.isGlobal);
-      const userTasks = filteredTasks.filter(task => !task.isGlobal);
-
-      const pendingTasks = globalTasks.filter(task => !task.isDone);
+      const userTasks = filteredTasks.filter(task => !task.isGlobal); // Tâches spécifiques à l'utilisateur
+  
+      const pendingTasks = [...userTasks.filter(task => !task.isDone), ...globalTasks.filter(task => !task.isDone)];
       setTasks(pendingTasks); // Tâches à faire
-
+  
       // Récupérer aussi les tâches terminées
       fetchCompletedTasks(); // Récupérer les tâches terminées en parallèle
     } catch (err) {
@@ -55,6 +55,7 @@ function TaskDetails() {
       setLoading(false);
     }
   };
+  
 
   // Récupérer les tâches à chaque changement de roomName
   useEffect(() => {
@@ -91,7 +92,7 @@ function TaskDetails() {
       ) : tasks.length > 0 ? (
         <div className="task-details">
           {tasks.map((task) => (
-            <Collapses title={task.name} icon={<i className="fa-solid fa-check" onClick={() => markAsDone(task._id)}></i>
+            <Collapses key={task._id} title={task.name} icon={<i className="fa-solid fa-check" onClick={() => markAsDone(task._id)}></i>
          
             }  >
               <div
