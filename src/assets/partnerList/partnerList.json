@@ -1,0 +1,21 @@
+[
+    {
+      "id": 1,
+      "name":"Express Cleaning",
+      "description": "Société de nettoyage à domicile située à [ville], intervention tous les jours même le dimanche.",
+      "localisation": "France",
+      "website": "www.partenaire-test-1.com",
+      "price": "20",
+        "logo": ""
+    },
+    {
+        "id": 2,
+        "name":"House Renov",
+        "description": "Rénovtion et ménage de votre maison ou appartement, intervention en 24h maximum.",
+        "localisation": "Test",
+        "website": "www.partenaire-test-2.com",
+        "price": "30",
+        "logo": ""
+      }
+  ]
+  

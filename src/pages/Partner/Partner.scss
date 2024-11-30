@@ -1,0 +1,46 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
+
+
+.partner{
+
+    .partner-display{
+        @include flex-column;
+        gap: $gap-base;
+    }
+
+    &--heading{
+        font-size: large;
+        color: $primary-color;
+        font-weight: 600;
+    }
+}
+
+
+.partner-display__card{
+    @include flex-row;
+    height: 100px;
+
+    p{
+        margin: 0;
+    }
+
+    &--img{
+        width: 100px;
+        height: 100px;
+        border: 1px black solid;
+    }
+
+    &--description{
+        width: 40%;
+        padding: $padding-elem
+    }
+
+    &--usefull{
+        @include flex-column;
+        justify-content: space-around;
+        margin: 0 0 0 auto ;
+        height: 100%;
+        padding: $padding-elem
+    }
+}

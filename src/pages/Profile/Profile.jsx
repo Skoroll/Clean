@@ -4,52 +4,29 @@ import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../../Config/axiosConfig';
 import './Settings.scss';
 
-function Settings() {
+function Profile() {
   const { pathname } = useLocation();
-  const [rooms, setRooms] = useState([]); // Liste des pièces récupérées
+  const [user, setUser] = useState([]); // Liste des pièces récupérées
   const [error, setError] = useState(null); // Message d'erreur en cas de problème
-  const [tasksData, setTasksData] = useState({}); // Tâches filtrées par pièce
-  const navigate = useNavigate();
 
-  const handleDeleteAccount = async () => {
-    if (window.confirm("Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible.")) {
-      try {
-        const token = localStorage.getItem('userToken');
-        const config = {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        };
-  
-        await axiosInstance.delete('/api/users/delete', config);
-  
-        localStorage.removeItem('token');
-        alert("Votre compte a été supprimé avec succès.");
-        navigate('/');
-      } catch (error) {
-        console.error("Erreur lors de la suppression du compte :", error);
-        alert("Une erreur est survenue, veuillez réessayer plus tard.");
-      }
-    }
-  };
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   }, [pathname]);
 
   const token = localStorage.getItem('userToken'); // Récupérer le token de l'utilisateur
 
-  const fetchRooms = async () => {
+  const fetchUser = async () => {
     try {
       const response = await axiosInstance.get('/users/profile', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      setRooms(response.data.user.rooms); // Récupérer les pièces de l'utilisateur depuis son profil
+      setRooms(response.data.user); // Récupérer les pièces de l'utilisateur depuis son profil
     } catch (error) {
       if (error.response) {
         if (error.response.status === 404) {
-          setError('Aucune donnée trouvée pour les pièces.');
+          setError('Aucune donnés trouvés.');
         } else {
           setError(`Erreur ${error.response.status}: ${error.response.data.message}`);
         }
@@ -59,13 +36,13 @@ function Settings() {
     }
   };
 
-  // Charge les pièces quand le composant est monté
+
   useEffect(() => {
-    fetchRooms();
-  }, []); // Exécution une seule fois au montage du composant
+    fetchUser();
+  }, []); 
 
   return (
-    <div className='settings'>
+    <div className='profile'>
       <div className="form-basic">
         <h1 className="form-heading">Paramètres</h1>
 
@@ -118,4 +95,4 @@ function Settings() {
   );
 }
 
-export default Settings;
+export default Profile;

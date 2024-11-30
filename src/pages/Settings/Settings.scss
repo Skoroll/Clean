@@ -12,3 +12,30 @@
         }
     }
 }
+
+.settings--rooms{
+    @include flex-row;
+    gap: $gap-base;
+    
+    span{
+        display: flex;
+        align-items: baseline;
+        padding: $padding-btn;
+        background: $border-color;
+        border-radius: $radius-base / 2;
+        font-weight: 400;
+        transition: font-weight 0.3s ease;
+
+        &:hover{
+            
+            font-weight: 700;
+        }
+
+        .fa-x{
+            margin-left: 5px;
+            font-size: 12px;
+
+
+        }
+    }
+}

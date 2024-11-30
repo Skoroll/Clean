@@ -3,7 +3,7 @@
 
 .home {
   .ref {
-    height: 105px;
+    height: 90px;
   }
 
   &__starter {
@@ -12,6 +12,7 @@
     display: flex;
     height: 68vh;
     cursor: pointer;
+    margin-top: 100px;
 
     &:hover {
       .home__starter--call {

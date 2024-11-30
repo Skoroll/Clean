@@ -1,0 +1,15 @@
+@import "../../styles//mixins.scss";
+@import "../../styles//variables.scss";
+
+.faq{
+
+    &--question{
+        color: $dark-gray;
+        margin-bottom: 5px;
+    }
+
+    p{
+        background: $border-color;
+        padding: $padding-page;
+    }
+}

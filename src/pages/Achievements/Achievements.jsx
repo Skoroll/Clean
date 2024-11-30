@@ -72,7 +72,7 @@ return (
 
   {error && 
   <div>
-  <p className="error">{error}</p>
+  <p className="error">Problème avec l'authentification de l'utilisateur</p>
   <Spinner />
   </div>
   }

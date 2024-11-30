@@ -22,55 +22,76 @@
 
   ul {
     @include ul-base;
+    width: 150px;
   }
 }
 
 .nav {
-  @include flex-column;
-  gap: calc($gap-base / 2);
+  @include flex-row;
+  flex-direction: row-reverse;
+  align-items: center;
+  border: 1px solid ;
+  background-color: $border-color;
+  border-radius: $radius-base / 2;
   position: relative;
+  width: 60px;
   height: 100%;
   margin: auto 50px auto auto;
+  padding: 5px;
+  transition: box-shadow 0.3 ease;
+  justify-content: space-evenly;
 
-  &__user, &__navigate{
-    height: 50px;
-    width: 50px;
+  a{
+    display: block;
+    width: 100%;
+  }
+  &:hover{
+    box-shadow: $shadow;
+  } 
+
+  &__user{
+    display: flex;
+
+  
+    justify-content: flex-end;
+    align-items: center;
   }
 
-  &__navigate--menu,
-  &__user--menu {
+  &__full, &__user--menu {
     position: absolute;
+    @include flex-column;
+    gap: $gap-base;
+    top: 75px;
     background: $primary-color;
-    padding: $padding-elem !important;
-    width: 130px;
-
+    border-radius: $radius-base;
+    text-align: left;
   }
 
+  &__user--menu {
+    right: 155px;
+    top: 0px;
+  }
 
+&__full{
+  right: 0;
+  color: $text-light;
+}
 
   .fa-user,
   .fa-bars, .profile-picture{
     display: flex;
-    font-size: 30px;
-    padding: $padding-btn;
+    font-size: 20px;
     border-radius: 15%;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     border: 1px solid transparent;
     transition: border-color 0.3s ease, color 0.3s ease;
-
-    &:hover {
-      border: 1px solid $border-color;
-      color: $border-color;
-    }
   }
 
   .profile-picture{
-    position: absolute;
-    top: 0 ;
-    width:50px;
-    height: 50px;
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
     object-fit: cover;
     padding: 0;
@@ -78,27 +99,13 @@
   }
 
   ul {
-    display: flex;
-    flex-direction: column;
-    gap: $gap-base;
-    border: 1px solid $border-color;
-    border-radius: $radius-base;
-    right: 0;
-    top: 95px;
-  
-
-    background: $primary-color;
-    color: $text-light;
-
     li {
       cursor: pointer;
       border-bottom: 1px solid transparent;
       padding: $padding-btn;
-      text-align: center;
 
       &:hover {
-        background: $secondary-opacity;
-       
+        background: $secondary-opacity; 
       }
     }
   }

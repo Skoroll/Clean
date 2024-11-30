@@ -35,7 +35,7 @@ function TaskBar() {
           ></i>
           <i
             className="fa-solid fa-pen"
-            onClick={() => openModal(<EditTaskForm rooms={rooms}/>)}
+            onClick={() => openModal(<EditTaskForm rooms={rooms} />)}
           ></i>
           <i
             className="fa-solid fa-trash"
@@ -49,10 +49,10 @@ function TaskBar() {
 
       {/* Composant Modal */}
       {modalOpen && (
-  <Modal onClose={closeModal} isActive={modalOpen}>
-    {modalContent}
-  </Modal>
-)}
+        <Modal onClose={closeModal} isActive={modalOpen}>
+          {modalContent}
+        </Modal>
+      )}
 
     </>
   );
