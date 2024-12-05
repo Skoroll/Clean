@@ -21,23 +21,31 @@ function Settings() {
 
   const token = localStorage.getItem('userToken');
 
+  useEffect(() => {
+    document.title = 'ChoreHelper - Paramètres';
+  }, []);
+
   // Supprimer le compte utilisateur
   const handleDeleteAccount = async () => {
-    if (window.confirm("Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible.")) {
-      try {
-        await axiosInstance.delete('/users/delete', {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        localStorage.clear();
-        setUser(null);
-        alert("Votre compte a été supprimé avec succès.");
-        navigate('/');
-      } catch (error) {
-        console.error("Erreur lors de la suppression du compte :", error);
-        alert("Une erreur est survenue, veuillez réessayer plus tard.");
-      }
+    const userConfirmation = window.confirm(
+      "Êtes-vous sûr de vouloir supprimer définitivement votre compte ?"
+    );
+    if (!userConfirmation) return;
+  
+    try {
+      await axiosInstance.delete("/users/delete", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      localStorage.clear();
+      setUser(null);
+      alert("Votre compte a été supprimé avec succès.");
+      navigate("/");
+    } catch (error) {
+      console.error("Erreur lors de la suppression du compte :", error);
+      alert("Une erreur est survenue, veuillez réessayer plus tard.");
     }
   };
+  
 
   // Récupérer les données utilisateur et les pièces
   const fetchUserData = async () => {
@@ -90,12 +98,51 @@ function Settings() {
     }
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Empêche le rafraîchissement de la page
+
+    try {
+      const formData = new FormData();
+      if (userData.password.trim() !== "" && userData.confirmPassword.trim() !== "") {
+        if (userData.password === userData.confirmPassword) {
+          formData.append("password", userData.password);
+        } else {
+          alert("Les mots de passe ne correspondent pas.");
+          return; // Stopper la soumission si les mots de passe ne correspondent pas
+        }
+      }
+      // Ajout des champs texte
+      formData.append('name', userData.name);
+      formData.append('email', userData.email);
+      formData.append('rooms', JSON.stringify(rooms)); // Convertir les pièces en JSON
+      formData.append('equipments', JSON.stringify([])); // Équipement par défaut
+  
+      // Ajout de l'image si elle est modifiée
+      if (typeof userData.profileImage === 'object') {
+        formData.append('profileImage', userData.profileImage);
+      }
+  
+      const response = await axiosInstance.put('/users/update', formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'multipart/form-data', // Nécessaire pour les fichiers
+        },
+      });
+  
+      alert('Profil mis à jour avec succès !');
+      setUser(response.data.user); // Met à jour le contexte utilisateur
+    } catch (error) {
+      console.error('Erreur lors de la mise à jour :', error);
+      alert(error.response?.data.message || 'Une erreur est survenue.');
+    }
+  };
+
   return (
     <div className='settings'>
       <h1 className="form-heading">Paramètres</h1>
 
       <div className='form settings__options'>
-        <form className='form-basic'>
+      <form className="form-basic" onSubmit={handleSubmit}>
 
           {/* Photo de profil */}
           <div className="settings__options--param">
@@ -190,8 +237,8 @@ function Settings() {
         {/* Actions dangereuses */}
         <div className="form-basic">
           <p className='dangerous' onClick={handleDeleteAccount}>Supprimer le compte</p>
-          <p className="dangerous">Réinitialiser les tâches</p>
-          <p className="dangerous">Redéfinir les pièces</p>
+          <p className="dangerous">Réinitialiser les tâches (pas utilisable dans cette version)</p>
+          <p className="dangerous">Redéfinir les pièces(pas utilisable dans cette version)</p>
         </div>
       </div>
     </div>

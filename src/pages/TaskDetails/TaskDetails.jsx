@@ -17,6 +17,11 @@ function TaskDetails() {
   const { pathname } = useLocation();
 
   useEffect(() => {
+    document.title = `ChoreHelper - ${roomName}`;
+  }, [roomName]);
+  
+
+  useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, [pathname]);
 

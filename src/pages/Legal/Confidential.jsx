@@ -6,6 +6,10 @@ import "./Legal.scss";
 
 function Confidential() {
   const { pathname } = useLocation();
+  
+  useEffect(() => {
+    document.title = 'ChoreHelper - Confidentialité';
+  }, []);
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });

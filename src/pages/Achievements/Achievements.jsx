@@ -8,9 +8,13 @@ function Achievements() {
   const { pathname } = useLocation();
   const [achievements, setAchievements] = useState([]);  // Liste des pièces récupérées
   const [error, setError] = useState(null); // Message d'erreur en cas de problème
+  
+  useEffect(() => {
+    document.title = 'ChoreHelper - Succès';
+  }, []);
+
   useEffect(() => {
 
-    
     const token = localStorage.getItem('userToken');  // Récupérer le token de l'utilisateur
     const fetchAchievement = async () => {
       try {

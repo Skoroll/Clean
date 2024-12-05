@@ -1,33 +1,103 @@
+
 @import "../../styles/mixins.scss";
 @import "../../styles/variables.scss";
 
+.contact {
+  // Fond principal et espacement général du conteneur
+  background-color: $background-color;
+  padding: $padding-page;
+  border-radius: $radius-base;
 
-.contact{
 
 
-    form{
-        @include flex-column;
-        gap: $gap-base;
-        label{
-            @include flex-column;
-            
-        }
 
-        input[type=textarea]{
-            height: 300px;
-        }
-
-        input[type=submit]{
-            border: none;
-            margin: auto
-        }
+  // Style de la liste des contacts (email et téléphone)
+  ul {
+    @include ul-base;
+    margin-bottom: $gap-base;
+    li {
+      color: $text-secondary;
+      font-size: 16px;
+      margin-bottom: 8px;
+      i {
+        color: $primary-color;
+        margin-right: 8px;
+      }
     }
+  }
 
-    ul{
-        @include ul-base;
-        @include flex-column;
+  // Style du formulaire
+  &__form {
+    @include flex-column;
+    gap: $gap-base;
+
+    // Style des champs du formulaire (inputs et textarea)
+    &--input {
+      @include flex-column;
+      gap: $gap-base;
+
+      input,
+      .contact__form--textarea {
+        background-color: $light-gray;
+        border: $border-base;
         padding: $padding-elem;
-        
-        gap: $gap-base;
+        border-radius: $radius-base;
+        font-size: 16px;
+        color: $text-primary;
+  
+        transition: all 0.3s ease-in-out;
+
+        &:focus {
+          border-color: $primary-color;
+          outline: none;
+          box-shadow: 0 0 5px $primary-color;
+        }
+      }
+
     }
+
+    // Bouton d'envoi
+    button {
+      @include base-btn;
+      width: 100%;
+      margin-top: $gap-base;
+    }
+  }
+
+  // Message de statut (succès ou erreur)
+  .status-message {
+    text-align: center;
+    padding: $padding-elem;
+    border-radius: $radius-base;
+    color: $text-light;
+    font-size: 16px;
+    margin: 0;
+
+
+    &.success {
+      background-color: $success-color;
+    }
+
+    &.error {
+      background-color: $error-color;
+    }
+
+    &.warning {
+      background-color: $warning-color;
+    }
+  }
 }
+
+
+.contact__form--textarea {
+    resize: none;
+    min-height: 150px;
+    background-color: $light-gray;
+    border: $border-base;
+    padding: $padding-elem;
+    border-radius: $radius-base;
+    font-size: 16px;
+    color: $text-primary;
+    
+    transition: all 0.3s ease-in-out;
+  }

@@ -8,6 +8,10 @@ function NotFound() {
   const { pathname } = useLocation();
 
   useEffect(() => {
+    document.title = 'ChoreHelper - 404';
+  }, []);
+
+  useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, [pathname]);
   return (

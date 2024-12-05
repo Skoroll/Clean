@@ -14,9 +14,9 @@ function Modal({ children, onClose, isActive }) {
       onClick={handleBackgroundClick}
     >
       <div className="modal" onClick={(e) => e.stopPropagation()}>
-        <button className="modal__close-btn" onClick={onClose} aria-label="Fermer">
-          <i className="fa-solid fa-x"></i>
-        </button>
+       
+          <i className="fa-solid fa-x" onClick={onClose}></i>
+     
         {children} {/* Contenu injecté, comme AddTaskForm */}
       </div>
     </div>

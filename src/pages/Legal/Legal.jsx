@@ -10,6 +10,10 @@ function Legal() {
     const { pathname } = useLocation();
 
     useEffect(() => {
+        document.title = 'ChoreHelper - Mentions légale';
+      }, []);
+
+    useEffect(() => {
       window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     }, [pathname]);
 

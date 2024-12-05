@@ -6,8 +6,11 @@ import { useLocation } from "react-router-dom";
 import "./FAQ.scss";
 
 function FAQ() {
-
   const { pathname } = useLocation();
+
+  useEffect(() => {
+    document.title = 'ChoreHelper - FAQ';
+  }, []);
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });

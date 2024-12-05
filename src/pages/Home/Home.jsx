@@ -11,6 +11,10 @@ function Home() {
   const { pathname } = useLocation();
 
   useEffect(() => {
+    document.title = 'ChoreHelper';
+  }, []);
+
+  useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, [pathname]);
   const sectionRef = useRef(null);

@@ -9,6 +9,10 @@ function Tips() {
   const { pathname } = useLocation();
 
   useEffect(() => {
+    document.title = 'ChoreHelper - Conseils';
+  }, []);
+
+  useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, [pathname]);
   return (

@@ -1,9 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from './components/Layout/Header/Header.';
+import Header from './components/Layout/Header/Header.'
 import Footer from './components/Layout/Footer/Footer';
-import Partner from './pages/Partner/Partner';
-import Achievements from './pages/Achievements/Achievements';
 import Home from './pages/Home/Home';
 import Contact from './pages/Contact/Contact';
 import Settings from './pages/Settings/Settings';
@@ -14,15 +12,16 @@ import SignIn from './components/UserForm/SignIn';
 import SignUp from './components/UserForm/SignUp';
 import TaskDetails from './pages/TaskDetails/TaskDetails';
 import DefineEquipment from './pages/DefineEquipments/DefineEquipments';
-import { UserProvider } from './UserContext';
 import FAQ from './pages/FAQ/FAQ';
 import Tips from './pages/Tips/Tips';
 import About from './pages/About/About';
 import Confidential from './pages/Legal/Confidential';
 import Terms from './pages/Legal/Terms';
 import Legal from './pages/Legal/Legal';
-import Profile from './pages/Profile/Profile'
-import "./styles/base.scss";
+import Achievements from './pages/Achievements/Achievements';
+import Partner from './pages/Partner/Partner';
+import { UserProvider } from './UserContext';
+import './styles/base.scss';
 
 function App() {
   return (
@@ -37,7 +36,6 @@ function App() {
               <Route path="/parametres" element={<Settings />} />
               <Route path="/votre-menage" element={<Task />} />
               <Route path="/user" element={<User />} />
-              <Route path="*" element={<NotFound />} />
               <Route path="/sign-in" element={<SignIn />} />
               <Route path="/sign-up" element={<SignUp />} />
               <Route path="/votre-menage/:roomName" element={<TaskDetails />} />
@@ -50,7 +48,7 @@ function App() {
               <Route path="/legal" element={<Legal />} />
               <Route path="/succes" element={<Achievements />} />
               <Route path="/partenaires" element={<Partner />} />
-              {/*<Route path="/profile" element={<Profile />} />*/}
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
           <Footer />

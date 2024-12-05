@@ -63,3 +63,9 @@ a {
     font-size: large;
     font-weight: 600;
 }
+
+input:focus {
+  border-color: #5f9ea0;
+  outline: none;
+  box-shadow: 0 0 5px #5f9ea0;
+}

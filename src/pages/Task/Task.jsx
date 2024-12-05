@@ -13,6 +13,10 @@ function Task() {
   const { user, setUser } = useContext(UserContext);
 
   useEffect(() => {
+    document.title = 'ChoreHelper - Votre ménage';
+  }, []);
+
+  useEffect(() => {
     // Récupérer les données utilisateur depuis localStorage
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
