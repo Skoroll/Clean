@@ -5,6 +5,7 @@
   @include flex-column;
   gap: $gap-base;
 .form-basic {
+    @include flex-column;
     margin: 20px auto;
     padding: 20px;
     border: 1px solid #ddd;

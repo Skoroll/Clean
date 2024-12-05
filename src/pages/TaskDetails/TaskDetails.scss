@@ -45,6 +45,8 @@
 }
 
 .task-details {
+  @include flex-column;
+  gap: $gap-base;
   &--block {
     @include flex-row;
     align-items: baseline;
@@ -127,8 +129,7 @@
 }
 
 .fa-trash {
-  top: 60%;
-  position: absolute;
+
 }
 
 .fa-check {

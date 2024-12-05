@@ -21,6 +21,7 @@ import About from './pages/About/About';
 import Confidential from './pages/Legal/Confidential';
 import Terms from './pages/Legal/Terms';
 import Legal from './pages/Legal/Legal';
+import Profile from './pages/Profile/Profile'
 import "./styles/base.scss";
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
               <Route path="/legal" element={<Legal />} />
               <Route path="/succes" element={<Achievements />} />
               <Route path="/partenaires" element={<Partner />} />
+              {/*<Route path="/profile" element={<Profile />} />*/}
             </Routes>
           </main>
           <Footer />

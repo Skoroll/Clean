@@ -98,6 +98,7 @@ function Nav() {
           <ul className="nav__user--menu">
             {user ? (
               <>
+                {/*<li><Link to="profile">Votre profil</Link></li>*/}
                 <li><Link to="succes">Vos succès</Link></li>
                 <li><Link to="/parametres">Paramètres</Link></li>
                 <li onClick={handleLogout}><Link to="/">Déconnexion</Link></li>

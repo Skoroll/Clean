@@ -1,29 +1,35 @@
-import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { UserContext } from '../../UserContext';
 import axiosInstance from '../../Config/axiosConfig';
 import './Settings.scss';
 
 function Settings() {
   const { pathname } = useLocation();
-  const [rooms, setRooms] = useState([]); // Liste des pièces récupérées
-  const [error, setError] = useState(null); // Message d'erreur en cas de problème
-  const [tasksData, setTasksData] = useState({}); // Tâches filtrées par pièce
+  const { setUser } = useContext(UserContext);
+  const [userData, setUserData] = useState({
+    name: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    profileImage: '', // URL ou fichier
+  });
+  const [previewImage, setPreviewImage] = useState(''); // Prévisualisation de l'image
+  const [rooms, setRooms] = useState([]);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
+  const token = localStorage.getItem('userToken');
+
+  // Supprimer le compte utilisateur
   const handleDeleteAccount = async () => {
     if (window.confirm("Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible.")) {
       try {
-        const token = localStorage.getItem('userToken');
-        const config = {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        };
-  
-        await axiosInstance.delete('/api/users/delete', config);
-  
-        localStorage.removeItem('token');
+        await axiosInstance.delete('/users/delete', {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        localStorage.clear();
+        setUser(null);
         alert("Votre compte a été supprimé avec succès.");
         navigate('/');
       } catch (error) {
@@ -32,86 +38,160 @@ function Settings() {
       }
     }
   };
-  useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-  }, [pathname]);
 
-  const token = localStorage.getItem('userToken'); // Récupérer le token de l'utilisateur
-
-  const fetchRooms = async () => {
+  // Récupérer les données utilisateur et les pièces
+  const fetchUserData = async () => {
     try {
       const response = await axiosInstance.get('/users/profile', {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        headers: { Authorization: `Bearer ${token}` },
       });
-      setRooms(response.data.user.rooms); // Récupérer les pièces de l'utilisateur depuis son profil
+      const user = response.data.user;
+      setUserData({
+        name: user.name || '',
+        email: user.email || '',
+        password: '', // Laisser vide pour des raisons de sécurité
+        confirmPassword: '',
+        profileImage: user.profileImage || '',
+      });
+
+      // Si l'image de profil est une URL relative, créez l'URL complète
+      const profileImageURL = user.profileImage ? `http://localhost:5000/${user.profileImage}` : '';
+      setPreviewImage(profileImageURL); // Précharger l'URL si disponible
+      setRooms(user.rooms || []);
     } catch (error) {
-      if (error.response) {
-        if (error.response.status === 404) {
-          setError('Aucune donnée trouvée pour les pièces.');
-        } else {
-          setError(`Erreur ${error.response.status}: ${error.response.data.message}`);
-        }
-      } else {
-        setError('Une erreur est survenue.');
-      }
+      setError(error.response ? error.response.data.message : "Une erreur est survenue.");
     }
   };
 
-  // Charge les pièces quand le composant est monté
+  // Défilement en haut de page et chargement des données utilisateur
   useEffect(() => {
-    fetchRooms();
-  }, []); // Exécution une seule fois au montage du composant
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    fetchUserData();
+  }, [pathname]);
+
+  // Gérer les changements dans les champs
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUserData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  // Gérer la sélection d'une nouvelle photo de profil
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setUserData((prevData) => ({
+        ...prevData,
+        profileImage: file, // Conserve le fichier dans l'état
+      }));
+      setPreviewImage(URL.createObjectURL(file)); // Génère une prévisualisation
+    }
+  };
 
   return (
     <div className='settings'>
-      <div className="form-basic">
-        <h1 className="form-heading">Paramètres</h1>
+      <h1 className="form-heading">Paramètres</h1>
 
-        <div className='form settings__options'>
-          <div className='form-basic'>
-            <div className="settings__options--param">
-              <label>Nom<input type="text" /></label>
-            </div>
+      <div className='form settings__options'>
+        <form className='form-basic'>
 
-            <div className="settings__options--param">
-              <label>E-mail<input type="email" /></label>
-            </div>
+          {/* Photo de profil */}
+          <div className="settings__options--param">
+            <label>
+              <div className="profile-image-container">
+                <img src={previewImage} alt="Photo de profil" className="profile-image" />
+               <p className='edit-icon'>Modifier <i className="fa-solid fa-pen-to-square"></i></p>
+              </div>
+              <input className='profile-image-container--input'
+                type="file"
+                name="profileImage"
+                accept="image/*"
+                onChange={handleFileChange}
+              />
+            </label>
+          </div>
 
-            <div className="settings__options--param">
-              <label>Mot de passe<input type="text" /></label>
-            </div>
+          {/* Nom */}
+          <div className="settings__options--param">
+            <label>
+              Nom
+              <input
+                type="text"
+                name="name"
+                value={userData.name}
+                onChange={handleChange}
+              />
+            </label>
+          </div>
 
-            <div className="settings__options--param">
-              <label>Confirmation du mot de passe<input type="text" /></label>
-            </div>
+          {/* E-mail */}
+          <div className="settings__options--param">
+            <label>
+              E-mail
+              <input
+                type="email"
+                name="email"
+                value={userData.email}
+                onChange={handleChange}
+              />
+            </label>
+          </div>
 
-            <div className='settings__options--param'>
-              <label>Vos pièces
+          {/* Mot de passe */}
+          <div className="settings__options--param">
+            <label>
+              Mot de passe
+              <input
+                type="password"
+                name="password"
+                value={userData.password}
+                onChange={handleChange}
+              />
+            </label>
+          </div>
+
+          {/* Confirmation du mot de passe */}
+          <div className="settings__options--param">
+            <label>
+              Confirmation du mot de passe
+              <input
+                type="password"
+                name="confirmPassword"
+                value={userData.confirmPassword}
+                onChange={handleChange}
+              />
+            </label>
+          </div>
+
+          {/* Liste des pièces */}
+          <div className="settings__options--param">
+            <label>
+              Vos pièces
               {rooms.length > 0 ? (
-                <p className='settings--rooms'>
+                <div className='settings--rooms'>
                   {rooms.map((room, index) => (
                     <span key={index} className='room'>
                       {room}
                       <i className="fa-solid fa-x"></i>
                     </span>
                   ))}
-                </p>
+                </div>
               ) : (
                 <p>{error || 'Aucune pièce trouvée.'}</p>
               )}
-              </label>
-            </div>
+            </label>
 
-            <div className="settings__options--param">
-              <label>Photo de profil<input type="file" /></label>
-            </div>
-
-            <p className='dangerous' onClick={handleDeleteAccount}>Supprimer le compte</p>
-            <p className="dangerous">Réinitialiser les tâches</p>
-            <p className="dangerous">Redéfinir les pièces</p>
           </div>
+            <input type='submit' className='sign-btn' value="Valider les changements"/>
+        </form>
+
+        {/* Actions dangereuses */}
+        <div className="form-basic">
+          <p className='dangerous' onClick={handleDeleteAccount}>Supprimer le compte</p>
+          <p className="dangerous">Réinitialiser les tâches</p>
+          <p className="dangerous">Redéfinir les pièces</p>
         </div>
       </div>
     </div>

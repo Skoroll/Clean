@@ -1,18 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "./TaskBar.scss";
 import Modal from '../Modal/Modal';
 import AddTaskForm from './Form/AddTaskForm';
 import EditTaskForm from './Form/EditTaskForm';
+import axiosInstance from '../../Config/axiosConfig';
 
 function TaskBar() {
   const [barOpen, setBarOpen] = useState(false); // État pour le slider
   const [modalOpen, setModalOpen] = useState(false); // État pour la modale
   const [modalContent, setModalContent] = useState(null); // Contenu de la modale
+  const [rooms, setRooms] = useState([]); // Liste dynamique des pièces
+  const [error, setError] = useState(null); // Gestion des erreurs
 
-  const rooms = ['Salon', 'Cuisine', 'Chambre', 'Salle de bain']; // Exemple de pièces
+  // Récupération des pièces utilisateur
+  useEffect(() => {
+    const fetchRooms = async () => {
+      try {
+        const token = localStorage.getItem('userToken');
+        const response = await axiosInstance.get('/users/profile', {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        console.log("Rooms fetched:", response.data.user.rooms);
+        setRooms(response.data.user.rooms || []);
+      } catch (err) {
+        console.error("Erreur lors de la récupération des pièces :", err);
+        setError("Impossible de charger les pièces.");
+      }
+    };
+    fetchRooms();
+  }, []);
 
   const toggleBar = () => {
-    setBarOpen(prevState => !prevState);
+    setBarOpen((prevState) => !prevState);
   };
 
   const openModal = (content) => {
@@ -31,11 +50,11 @@ function TaskBar() {
         <div className="task-bar__wrapper">
           <i
             className="fa-solid fa-plus"
-            onClick={() => openModal(<AddTaskForm rooms={rooms} />)}
+            onClick={() => openModal(<AddTaskForm rooms={rooms} error={error} onClose={closeModal} />)}
           ></i>
           <i
             className="fa-solid fa-pen"
-            onClick={() => openModal(<EditTaskForm rooms={rooms} />)}
+            onClick={() => openModal(<EditTaskForm rooms={rooms} error={error} onClose={closeModal} />)}
           ></i>
           <i
             className="fa-solid fa-trash"
@@ -53,7 +72,6 @@ function TaskBar() {
           {modalContent}
         </Modal>
       )}
-
     </>
   );
 }

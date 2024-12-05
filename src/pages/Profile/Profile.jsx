@@ -1,32 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-import axiosInstance from '../../Config/axiosConfig';
-import './Settings.scss';
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import GoBack from "../../components/GoBack/GoBack";
+import axiosInstance from "../../Config/axiosConfig";
+import "./Profile.scss";
 
 function Profile() {
   const { pathname } = useLocation();
-  const [user, setUser] = useState([]); // Liste des pièces récupérées
-  const [error, setError] = useState(null); // Message d'erreur en cas de problème
+  const [rooms, setRooms] = useState([]); // Liste des pièces récupérées
+  const [user, setUser] = useState({}); // Utilisateur récupéré
+  const [error, setError] = useState(null); // Message d'erreur
+  const token = localStorage.getItem("userToken"); // Token utilisateur
 
+  // Défilement en haut de page au changement de route
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, [pathname]);
 
-  const token = localStorage.getItem('userToken'); // Récupérer le token de l'utilisateur
-
-  const fetchUser = async () => {
+  const fetchRooms = async () => {
     try {
       const response = await axiosInstance.get('/users/profile', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      setRooms(response.data.user); // Récupérer les pièces de l'utilisateur depuis son profil
+      setRooms(response.data.user.rooms); // Récupérer les pièces de l'utilisateur depuis son profil
     } catch (error) {
       if (error.response) {
         if (error.response.status === 404) {
-          setError('Aucune donnés trouvés.');
+          setError('Aucune donnée trouvée pour les pièces.');
         } else {
           setError(`Erreur ${error.response.status}: ${error.response.data.message}`);
         }
@@ -36,60 +37,84 @@ function Profile() {
     }
   };
 
-
+  // Charge les pièces quand le composant est monté
   useEffect(() => {
-    fetchUser();
-  }, []); 
+    fetchRooms();
+  }, []);
+  // Récupération des données utilisateur
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await axiosInstance.get("/users/profile", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        setUser(response.data.user); // Met à jour les données utilisateur
+      } catch (error) {
+        // Gestion des erreurs
+        if (error.response) {
+          setError(
+            error.response.status === 404
+              ? "Aucune donnée trouvée."
+              : `Erreur ${error.response.status}: ${error.response.data.message}`
+          );
+        } else {
+          setError("Une erreur est survenue lors de la récupération des données.");
+        }
+      }
+    };
+
+    if (token) {
+      fetchUser(); // Appelle la fonction uniquement si le token est présent
+    } else {
+      setError("Utilisateur non authentifié.");
+    }
+  }, [token]); // L'effet dépend du token
 
   return (
-    <div className='profile'>
-      <div className="form-basic">
-        <h1 className="form-heading">Paramètres</h1>
+    <div className="profile">
+      <GoBack />
+      <div className="profile-user">
+        {error && <p className="error-message">{error}</p>}
 
-        <div className='form settings__options'>
-          <div className='form-basic'>
-            <div className="settings__options--param">
-              <label>Nom<input type="text" /></label>
-            </div>
-
-            <div className="settings__options--param">
-              <label>E-mail<input type="email" /></label>
-            </div>
-
-            <div className="settings__options--param">
-              <label>Mot de passe<input type="text" /></label>
-            </div>
-
-            <div className="settings__options--param">
-              <label>Confirmation du mot de passe<input type="text" /></label>
-            </div>
-
-            <div className='settings__options--param'>
-              <label>Vos pièces
-              {rooms.length > 0 ? (
-                <p className='settings--rooms'>
-                  {rooms.map((room, index) => (
-                    <span key={index} className='room'>
-                      {room}
-                      <i className="fa-solid fa-x"></i>
-                    </span>
-                  ))}
+        {user && (
+          <>
+<img
+  src={user.profileImage ? `http://localhost:5000/${user.profileImage}` : "/default-profile.png"}
+  alt="Photo de profil"
+  className="profile-user--image"
+/>
+            <div className="profile-user__informations">
+              <div className="profile-user__informations--name">
+                <p className="profile--name">
+                  {user.name}
                 </p>
-              ) : (
-                <p>{error || 'Aucune pièce trouvée.'}</p>
-              )}
-              </label>
-            </div>
+              </div>
 
-            <div className="settings__options--param">
-              <label>Photo de profil<input type="file" /></label>
-            </div>
+              <div className="profile-user__informations--rooms">
 
-            <p className='dangerous' onClick={handleDeleteAccount}>Supprimer le compte</p>
-            <p className="dangerous">Réinitialiser les tâches</p>
-            <p className="dangerous">Redéfinir les pièces</p>
-          </div>
-        </div>
+                {rooms.length > 0 ? (
+                  <p className='profile--rooms'>
+                    {rooms.map((room, index) => (
+                      <span key={index} className='room'>
+                        {room}
+                        
+                      </span>
+                    ))}
+                  </p>
+                ) : (
+                  <p>{error || 'Aucune pièce trouvée.'}</p>
+                )}
+                z
+              </div>
+
+              <div className="profile-user__informations--level">
+                <p>
+                 Niveau
+                </p>
+              </div>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

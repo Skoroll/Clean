@@ -5,6 +5,7 @@ import Spinner from "../../components/Spinner/Spinner";
 import GoBack from "../../components/GoBack/GoBack";
 import { useLocation } from "react-router-dom";
 import Collapses from "../../components/Collapses/Collapses";
+import TaskBar from "../../components/TaskBar/TaskBar";
 import "./TaskDetails.scss";
 
 function TaskDetails() {
@@ -23,9 +24,10 @@ function TaskDetails() {
   const fetchCompletedTasks = async () => {
     try {
       setLoading(true);
-      const response = await axiosInstance.get(`/tasks/completed?rooms=${roomName}`);
-      // Mise à jour de l'état avec les tâches terminées récupérées
-      setCompletedTasks(response.data);
+      const response = await axiosInstance.get(
+        `/tasks/completed?rooms=${roomName}`
+      );
+      setCompletedTasks(response.data); // Mise à jour de l'état avec les tâches terminées récupérées
     } catch (err) {
       setError("Erreur lors de la récupération des tâches terminées.");
     } finally {
@@ -37,17 +39,23 @@ function TaskDetails() {
   const fetchTasks = async () => {
     try {
       setLoading(true);
-      const response = await axiosInstance.get(`/tasks/by-room?rooms=${roomName}`);
-      const filteredTasks = response.data.filter(task => task.room === roomName);
-  
+      const response = await axiosInstance.get(
+        `/tasks/by-room?rooms=${roomName}`
+      );
+      const filteredTasks = response.data.filter(
+        (task) => task.room === roomName
+      );
+
       // Séparer les tâches en fonction de leur état (non terminées ou terminées)
-      const globalTasks = filteredTasks.filter(task => task.isGlobal);
-      const userTasks = filteredTasks.filter(task => !task.isGlobal); // Tâches spécifiques à l'utilisateur
-  
-      const pendingTasks = [...userTasks.filter(task => !task.isDone), ...globalTasks.filter(task => !task.isDone)];
+      const globalTasks = filteredTasks.filter((task) => task.isGlobal);
+      const userTasks = filteredTasks.filter((task) => !task.isGlobal); // Tâches spécifiques à l'utilisateur
+
+      const pendingTasks = [
+        ...userTasks.filter((task) => !task.isDone),
+        ...globalTasks.filter((task) => !task.isDone),
+      ];
       setTasks(pendingTasks); // Tâches à faire
-  
-      // Récupérer aussi les tâches terminées
+
       fetchCompletedTasks(); // Récupérer les tâches terminées en parallèle
     } catch (err) {
       setError("Erreur lors de la récupération des tâches.");
@@ -55,32 +63,44 @@ function TaskDetails() {
       setLoading(false);
     }
   };
-  
-
-  // Récupérer les tâches à chaque changement de roomName
-  useEffect(() => {
-    fetchTasks();
-  }, [roomName]);
 
   // Fonction pour marquer une tâche comme terminée
   const markAsDone = async (taskId) => {
     try {
-      // Effectuer la mise à jour de la tâche en base de données
-      const response = await axiosInstance.put(`/tasks/${taskId}/done`);
-
-      // Afficher la réponse du backend après la mise à jour
+      const response = await axiosInstance.put(`/tasks/${taskId}/done`); // Mise à jour de la tâche en base de données
       console.log("Réponse après validation de la tâche : ", response.data);
-
-      // Récupérer à nouveau toutes les tâches et les filtrer
       fetchTasks(); // Rafraîchir la liste des tâches après mise à jour
     } catch (error) {
       console.error("Erreur lors de la mise à jour de la tâche", error);
     }
   };
 
+  // Nouvelle fonction : supprimer une tâche
+  const deleteTask = async (taskId) => {
+    try {
+      const response = await axiosInstance.delete(`/tasks/${taskId}`); // Assurez-vous que cette route existe
+      console.log("Tâche supprimée :", response.data);
+      fetchTasks(); // Rafraîchir la liste après suppression
+    } catch (error) {
+      if (error.response) {
+        console.error("Erreur serveur :", error.response.data);
+        setError(`Erreur : ${error.response.data.message}`);
+      } else {
+        console.error("Erreur réseau :", error.message);
+        setError("Erreur réseau. Veuillez vérifier votre connexion.");
+      }
+    }
+  };
+  
+  // Récupérer les tâches à chaque changement de roomName
+  useEffect(() => {
+    fetchTasks();
+  }, [roomName]);
+
   return (
     <div className="tasks">
       <GoBack target="/votre-menage" />
+      <TaskBar />
       <h1>{roomName}</h1>
 
       {/* Section des tâches à faire */}
@@ -92,14 +112,25 @@ function TaskDetails() {
       ) : tasks.length > 0 ? (
         <div className="task-details">
           {tasks.map((task) => (
-            <Collapses key={task._id} title={task.name} icon={<i className="fa-solid fa-check" onClick={() => markAsDone(task._id)}></i>
-         
-            }  >
-              <div
-                key={task._id}
-                className="task-details__task"
-              >
-                <i className="fa-solid fa-trash"></i>
+            <Collapses
+              key={task._id}
+              title={task.name}
+              icon={
+                <>
+                  {/* Bouton pour marquer comme terminé */}
+                  <i
+                    className="fa-solid fa-check"
+                    onClick={() => markAsDone(task._id)}
+                  ></i>
+                  {/* Bouton pour supprimer une tâche */}
+                  <i
+                    className="fa-solid fa-trash"
+                    onClick={() => deleteTask(task._id)} // Appel de la nouvelle fonction
+                  ></i>
+                </>
+              }
+            >
+              <div className="task-details__task">
                 <div className="task-details--block">
                   <div className="task-details__task--div-time">
                     <p className="tasks-details__task--time">
@@ -109,7 +140,6 @@ function TaskDetails() {
                     <p className="task-details__task--frequency">
                       <i className="fa-solid fa-calendar"></i>
                       <span className="tasks-details__task--frequency">
-                        {" "}
                         {task.frequency}
                       </span>
                     </p>
@@ -132,7 +162,7 @@ function TaskDetails() {
           ))}
         </div>
       ) : (
-        <p className="tasks-done--none"> ...plus aucune tâche, bravo !</p>
+        <p className="tasks-done--none">...plus aucune tâche, bravo !</p>
       )}
 
       {/* Section des tâches terminées */}

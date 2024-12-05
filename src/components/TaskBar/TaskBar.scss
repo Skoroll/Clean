@@ -58,5 +58,19 @@
 
   }
 
- 
+ &__form{
+  @include flex-column;
+  gap: $gap-base;
+  width: 300px;
+
+  label{
+    @include flex-column;
+    gap: calc($gap-base/2);
+    font-weight: 600;
+  }
+
+  input[type=textArea]{
+    height: 150px;
+  }
+ }
 }

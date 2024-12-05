@@ -1,41 +1,84 @@
 @import "../../styles/mixins.scss";
 @import "../../styles/variables.scss";
 
-.settings{
-
-    &__options{
-
-        &--param{
-            label{
-                @include flex-column
-            }
-        }
+.settings {
+  &__options {
+    &--param {
+      label {
+        @include flex-column;
+      }
     }
+  }
 }
 
-.settings--rooms{
-    @include flex-row;
-    gap: $gap-base;
-    
-    span{
-        display: flex;
-        align-items: baseline;
-        padding: $padding-btn;
-        background: $border-color;
-        border-radius: $radius-base / 2;
-        font-weight: 400;
-        transition: font-weight 0.3s ease;
+.settings--rooms {
+  @include flex-row;
+  gap: $gap-base;
 
-        &:hover{
-            
-            font-weight: 700;
-        }
+  span {
+    display: flex;
+    align-items: baseline;
+    padding: $padding-btn;
+    background: $border-color;
+    border-radius: $radius-base / 2;
+    font-weight: 400;
+    transition: font-weight 0.3s ease;
 
-        .fa-x{
-            margin-left: 5px;
-            font-size: 12px;
-
-
-        }
+    &:hover {
+      font-weight: 700;
     }
+
+    .fa-x {
+      margin-left: 5px;
+      font-size: 12px;
+    }
+  }
+}
+
+.profile-accessibility {
+  @include flex-row;
+  justify-content: space-evenly;
+  &--answer {
+    display: flex;
+
+    label {
+      background: none;
+    }
+  }
+}
+
+.profile-image-container {
+  position: relative;
+  @include flex-column;
+height: 300px;
+
+  .profile-image {
+    width: 50%;
+    max-width: 300px;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: auto;
+  }
+
+  .edit-icon {
+    position: absolute;
+    bottom: 0px;
+    left: 230px;
+    color: $text-light;
+    font-size: 20px;
+    padding: $padding-btn;
+    background-color: $primary-color;
+    transition: background-color 1s ease, border-radius 1s ease, color 1s ease;
+    margin: 0;
+    &:hover{
+        background-color: $primary-opacity;
+        border-radius: $radius-base;
+        color: inherit;
+    }
+  }
+
+  &--input {
+    display: none;
+  }
 }

@@ -4,7 +4,7 @@ import "./Modal.scss";
 function Modal({ children, onClose, isActive }) {
   const handleBackgroundClick = (e) => {
     if (e.target.classList.contains('modal-bg')) {
-      onClose();
+      onClose(); // Ferme la modale si le clic est sur le fond
     }
   };
 
@@ -14,12 +14,13 @@ function Modal({ children, onClose, isActive }) {
       onClick={handleBackgroundClick}
     >
       <div className="modal" onClick={(e) => e.stopPropagation()}>
-        <i className="fa-solid fa-x" onClick={onClose}></i>
-        {children}
+        <button className="modal__close-btn" onClick={onClose} aria-label="Fermer">
+          <i className="fa-solid fa-x"></i>
+        </button>
+        {children} {/* Contenu injecté, comme AddTaskForm */}
       </div>
     </div>
   );
 }
 
 export default Modal;
-

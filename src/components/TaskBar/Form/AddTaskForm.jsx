@@ -1,132 +1,130 @@
 import React, { useState } from 'react';
+import axiosInstance from '../../../Config/axiosConfig';
 
-function AddTaskForm({ rooms }) {
-  // État pour les champs du formulaire
-  const [taskName, setTaskName] = useState('');
-  const [estimatedTime, setEstimatedTime] = useState('');
-  const [frequency, setFrequency] = useState('');
-  const [description, setDescription] = useState('');
-  const [equipments, setEquipments] = useState('');
-  const [selectedRoom, setSelectedRoom] = useState('');
+const AddTaskForm = ({ rooms, error, onClose }) => {
+  const [task, setTask] = useState({
+    name: '',
+    description: '',
+    time: '',
+    frequency: '',
+    room: rooms[0],
+    what: '',
+  });
 
-  // Gestion de la soumission du formulaire
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const newTask = {
-      name: taskName,
-      time: estimatedTime,
-      frequency,
-      description,
-      equipments: equipments.split(',').map((item) => item.trim()),
-      room: selectedRoom,
-    };
-    console.log('Nouvelle tâche ajoutée:', newTask);
-    // Réinitialiser les champs après soumission
-    setTaskName('');
-    setEstimatedTime('');
-    setFrequency('');
-    setDescription('');
-    setEquipments('');
-    setSelectedRoom('');
+  const handleChange = (e) => {
+    setTask({ ...task, [e.target.name]: e.target.value });
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  
+    // Validation des champs
+    if (!task.frequency) {
+      alert('Veuillez sélectionner une fréquence.');
+      return;
+    }
+  
+    const whatArray = task.what
+      .split(',')
+      .map((item) => item.trim())
+      .filter((item) => item.length > 0);
+  
+    if (whatArray.length === 0) {
+      alert('Veuillez spécifier au moins un outil.');
+      return;
+    }
+  
+    try {
+      const token = localStorage.getItem('userToken');
+      const response = await axiosInstance.post(
+        '/tasks',
+        { ...task, what: whatArray },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      console.log('Tâche ajoutée avec succès:', response.data);
+  
+      // Appel de onClose après succès
+      if (onClose) {
+        onClose();
+      }
+    } catch (error) {
+      console.error("Erreur lors de l'ajout de la tâche:", error);
+    }
+  };
+  
+
   return (
-    <div className="modal-form">
-      <p className="modal-form--heading">Créer une tâche</p>
-      <form className="form" onSubmit={handleSubmit}>
-        {/* Nom de la tâche */}
-        <div className="form-group">
-          <label htmlFor="taskName">Nom de la tâche</label>
-          <input
-            type="text"
-            id="taskName"
-            value={taskName}
-            onChange={(e) => setTaskName(e.target.value)}
-            required
-          />
-        </div>
+    <form className='task-bar__form' onSubmit={handleSubmit}>
+      <p className="task-bar--heading">Ajouter une tâche</p>
+      <label>
+        Nom de la tâche
+        <input
+          type="text"
+          name="name"
+          value={task.name}
+          onChange={handleChange}
+          placeholder="Nom de la tâche"
+        />
+      </label>
 
-        {/* Temps estimé */}
-        <div className="form-group">
-          <label htmlFor="estimatedTime">Temps estimé (en minutes)</label>
-          <input
-            type="number"
-            id="estimatedTime"
-            value={estimatedTime}
-            onChange={(e) => setEstimatedTime(e.target.value)}
-            required
-          />
-        </div>
+      <label>
+        Description
+        <textarea
+          name="description"
+          value={task.description}
+          onChange={handleChange}
+          placeholder="Description"
+        />
+      </label>
 
-        {/* Fréquence */}
-        <div className="form-group">
-          <label htmlFor="frequency">Fréquence</label>
-          <select
-            id="frequency"
-            value={frequency}
-            onChange={(e) => setFrequency(e.target.value)}
-            required
-          >
-            <option value="" disabled>
-              Choisissez une fréquence
-            </option>
-            <option value="Quotidienne">Quotidienne</option>
-            <option value="Hebdomadaire">Hebdomadaire</option>
-            <option value="Mensuelle">Mensuelle</option>
-            <option value="Annuelle">Annuelle</option>
-          </select>
-        </div>
+      <label>
+        Quelle pièce
+        <select name="room" value={task.room} onChange={handleChange}>
+          {rooms.map((room, index) => (
+            <option key={index} value={room}>{room}</option>
+          ))}
+        </select>
+      </label>
 
-        {/* Description */}
-        <div className="form-group">
-          <label htmlFor="description">Description</label>
-          <textarea
-            id="description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            maxLength="300"
-            required
-          ></textarea>
-          <p>{description.length}/300 caractères</p>
-        </div>
+      <label>
+        Durée de la tâche (en minutes)
+        <input
+          type="number"
+          name="time"
+          value={task.time}
+          onChange={handleChange}
+          placeholder="Durée estimée"
+        />
+      </label>
 
-        {/* Équipements requis */}
-        <div className="form-group">
-          <label htmlFor="equipments">Équipements requis (séparés par des virgules)</label>
-          <input
-            type="text"
-            id="equipments"
-            value={equipments}
-            onChange={(e) => setEquipments(e.target.value)}
-          />
-        </div>
+      <label>
+        A quelle fréquence
+        <select name="frequency" value={task.frequency} onChange={handleChange}>
+          <option value="">Choisissez une fréquence</option>
+          <option value="Quotidienne">Quotidienne</option>
+          <option value="Hebdomadaire">Hebdomadaire</option>
+          <option value="Mensuelle">Mensuelle</option>
+          <option value="Trimestrielle">Trimestrielle</option>
+          <option value="Semestrielle">Semestrielle</option>
+        </select>
+      </label>
 
-        {/* Sélection de la pièce */}
-        <div className="form-group">
-          <label htmlFor="room">Pièce</label>
-          <select
-            id="room"
-            value={selectedRoom}
-            onChange={(e) => setSelectedRoom(e.target.value)}
-            required
-          >
-            <option value="" disabled>
-              Choisissez une pièce
-            </option>
-            {rooms.map((room, index) => (
-              <option key={index} value={room}>
-                {room}
-              </option>
-            ))}
-          </select>
-        </div>
+      <label>
+        Outils nécessaires (séparez-les par des virgules)
+        <input
+          type="text"
+          name="what"
+          value={task.what}
+          onChange={handleChange}
+          placeholder="Ex: balai, serpillère, seau"
+        />
+      </label>
 
-        <button type="submit" className="sign-btn">
-          Ajouter la tâche
-        </button>
-      </form>
-    </div>
+      <button type="submit">Ajouter la tâche</button>
+    </form>
   );
-}
+};
 
 export default AddTaskForm;
