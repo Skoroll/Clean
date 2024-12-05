@@ -30,7 +30,7 @@ function Task() {
     <div className='task'>
       <GoBack target="/"/>
       <p className='task--title'>Bonjour {user.name} </p>
-      <p className="task--subtitle">De quoi on s'occupe aujour'hui ?</p>
+      <p className="task--subtitle">De quoi on s'occupe aujourd'hui ?</p>
       <TaskBar />
       <Modal />
       <TaskTheme />
