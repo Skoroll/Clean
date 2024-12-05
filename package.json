@@ -15,12 +15,15 @@
     "sass": "^1.80.7",
     "web-vitals": "^2.1.4"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
+"scripts": {
+  "start": "react-scripts start",
+  "build": "react-scripts build",
+  "test": "react-scripts test",
+  "eject": "react-scripts eject",
+  "deploy": "gh-pages -d build"
+},
+
+  
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -39,5 +42,8 @@
       "last 1 safari version"
     ]
   },
-    "homepage": "https://skoroll.github.io/clean"
+  "homepage": "https://skoroll.github.io/Clean",
+  "devDependencies": {
+    "gh-pages": "^6.2.0"
+  }
 }
