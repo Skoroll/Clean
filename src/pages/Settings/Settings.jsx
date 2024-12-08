@@ -21,6 +21,9 @@ function Settings() {
 
   const token = localStorage.getItem('userToken');
 
+  // URL du serveur
+  const serverURL = 'https://cleanback.fly.dev'; // Remplacez par l'URL de votre serveur de production
+
   useEffect(() => {
     document.title = 'ChoreHelper - Paramètres';
   }, []);
@@ -31,7 +34,7 @@ function Settings() {
       "Êtes-vous sûr de vouloir supprimer définitivement votre compte ?"
     );
     if (!userConfirmation) return;
-  
+
     try {
       await axiosInstance.delete("/users/delete", {
         headers: { Authorization: `Bearer ${token}` },
@@ -45,7 +48,6 @@ function Settings() {
       alert("Une erreur est survenue, veuillez réessayer plus tard.");
     }
   };
-  
 
   // Récupérer les données utilisateur et les pièces
   const fetchUserData = async () => {
@@ -63,7 +65,7 @@ function Settings() {
       });
 
       // Si l'image de profil est une URL relative, créez l'URL complète
-      const profileImageURL = user.profileImage ? `http://localhost:5000/${user.profileImage}` : '';
+      const profileImageURL = user.profileImage ? `${serverURL}/${user.profileImage}` : '';
       setPreviewImage(profileImageURL); // Précharger l'URL si disponible
       setRooms(user.rooms || []);
     } catch (error) {
@@ -116,19 +118,19 @@ function Settings() {
       formData.append('email', userData.email);
       formData.append('rooms', JSON.stringify(rooms)); // Convertir les pièces en JSON
       formData.append('equipments', JSON.stringify([])); // Équipement par défaut
-  
+
       // Ajout de l'image si elle est modifiée
       if (typeof userData.profileImage === 'object') {
         formData.append('profileImage', userData.profileImage);
       }
-  
+
       const response = await axiosInstance.put('/users/update', formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data', // Nécessaire pour les fichiers
         },
       });
-  
+
       alert('Profil mis à jour avec succès !');
       setUser(response.data.user); // Met à jour le contexte utilisateur
     } catch (error) {
@@ -142,7 +144,7 @@ function Settings() {
       <h1 className="form-heading">Paramètres</h1>
 
       <div className='form settings__options'>
-      <form className="form-basic" onSubmit={handleSubmit}>
+        <form className="form-basic" onSubmit={handleSubmit}>
 
           {/* Photo de profil */}
           <div className="settings__options--param">
@@ -229,9 +231,8 @@ function Settings() {
                 <p>{error || 'Aucune pièce trouvée.'}</p>
               )}
             </label>
-
           </div>
-            <input type='submit' className='sign-btn' value="Valider les changements"/>
+          <input type='submit' className='sign-btn' value="Valider les changements"/>
         </form>
 
         {/* Actions dangereuses */}
