@@ -58,7 +58,7 @@ function Nav() {
       <div className="nav__user">
         {user && user.profileImage ? (
           <img
-            src={`http://localhost:5000/${user.profileImage}`}
+            src={`https://cleanback.fly.dev/${user.profileImage}`}
             alt="Profil utilisateur"
             className="profile-picture"
           />
