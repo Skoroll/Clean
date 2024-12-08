@@ -22,7 +22,7 @@ function Settings() {
   const token = localStorage.getItem('userToken');
 
   // URL du serveur
-  const serverURL = 'https://cleanback.fly.dev'; // Remplacez par l'URL de votre serveur de production
+  const serverURL = 'https://cleanback.fly.dev/api/'; // Remplacez par l'URL de votre serveur de production
 
   useEffect(() => {
     document.title = 'ChoreHelper - Paramètres';
