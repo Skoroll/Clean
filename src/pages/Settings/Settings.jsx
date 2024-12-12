@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../UserContext';
 import axiosInstance from '../../Config/axiosConfig';
+import GoBack from "../../components/GoBack/GoBack"
 import './Settings.scss';
 
 function Settings() {
@@ -25,7 +26,7 @@ function Settings() {
   const serverURL = 'http://localhost:8080/'; // Remplacez par l'URL de votre serveur de production
 
   useEffect(() => {
-    document.title = 'ChoreHelper - Paramètres';
+    document.title = 'Paramètres - ChoreHelper';
   }, []);
 
   // Supprimer le compte utilisateur
@@ -134,6 +135,7 @@ function Settings() {
 
   return (
     <div className='settings'>
+      <GoBack />
       <h1 className="form-heading">Paramètres</h1>
 
       <div className='form settings__options'>

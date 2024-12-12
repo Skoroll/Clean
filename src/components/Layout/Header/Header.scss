@@ -61,20 +61,24 @@
     position: absolute;
     @include flex-column;
     gap: $gap-base;
-    top: 75px;
-    background: $primary-color;
+    top: 50px;
+    background: $border-color;
     border-radius: $radius-base;
     text-align: left;
+    border: 1px solid $border-color;
+    padding: $padding-btn !important;
   }
 
   &__user--menu {
-    right: 155px;
+    right: 170px;
     top: 0px;
+
   }
 
 &__full{
   right: 0;
-  color: $text-light;
+  color: $primary-color;
+
 }
 
   .fa-user,
