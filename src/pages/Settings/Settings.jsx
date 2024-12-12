@@ -22,7 +22,7 @@ function Settings() {
   const token = localStorage.getItem('userToken');
 
   // URL du serveur
-  const serverURL = 'https://cleanback.fly.dev/api/'; // Remplacez par l'URL de votre serveur de production
+  const serverURL = 'http://localhost:8080/'; // Remplacez par l'URL de votre serveur de production
 
   useEffect(() => {
     document.title = 'ChoreHelper - Paramètres';
@@ -65,7 +65,7 @@ function Settings() {
       });
 
       // Si l'image de profil est une URL relative, créez l'URL complète
-      const profileImageURL = user.profileImage ? `${serverURL}/${user.profileImage}` : '';
+      const profileImageURL = user.profileImage ? `${serverURL}${user.profileImage}` : '';
       setPreviewImage(profileImageURL); // Précharger l'URL si disponible
       setRooms(user.rooms || []);
     } catch (error) {
@@ -99,45 +99,38 @@ function Settings() {
       setPreviewImage(URL.createObjectURL(file)); // Génère une prévisualisation
     }
   };
+  
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Empêche le rafraîchissement de la page
-
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('name', userData.name);
+    formData.append('email', userData.email);
+    
+    // Ajout de l'image de profil si elle a été modifiée
+    if (typeof userData.profileImage === 'object') {
+      formData.append('profileImage', userData.profileImage);
+    }
+  
     try {
-      const formData = new FormData();
-      if (userData.password.trim() !== "" && userData.confirmPassword.trim() !== "") {
-        if (userData.password === userData.confirmPassword) {
-          formData.append("password", userData.password);
-        } else {
-          alert("Les mots de passe ne correspondent pas.");
-          return; // Stopper la soumission si les mots de passe ne correspondent pas
-        }
-      }
-      // Ajout des champs texte
-      formData.append('name', userData.name);
-      formData.append('email', userData.email);
-      formData.append('rooms', JSON.stringify(rooms)); // Convertir les pièces en JSON
-      formData.append('equipments', JSON.stringify([])); // Équipement par défaut
-
-      // Ajout de l'image si elle est modifiée
-      if (typeof userData.profileImage === 'object') {
-        formData.append('profileImage', userData.profileImage);
-      }
-
       const response = await axiosInstance.put('/users/update', formData, {
         headers: {
           Authorization: `Bearer ${token}`,
-          'Content-Type': 'multipart/form-data', // Nécessaire pour les fichiers
+          'Content-Type': 'multipart/form-data',
         },
       });
-
-      alert('Profil mis à jour avec succès !');
-      setUser(response.data.user); // Met à jour le contexte utilisateur
+  
+      // Mettre à jour le contexte et localStorage
+      setUser(response.data.user);
+      localStorage.setItem('user', JSON.stringify(response.data.user)); // Mettre à jour localStorage
+  
+      alert('Profil mis à jour avec succès!');
     } catch (error) {
       console.error('Erreur lors de la mise à jour :', error);
-      alert(error.response?.data.message || 'Une erreur est survenue.');
+      alert('Erreur lors de la mise à jour, veuillez réessayer.');
     }
   };
+
 
   return (
     <div className='settings'>

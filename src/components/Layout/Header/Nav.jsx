@@ -14,7 +14,17 @@ function Nav() {
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     }
-  }, [setUser]);
+  }, [setUser]); // On vérifie à chaque rendu
+  
+  useEffect(() => {
+    // Synchroniser `user` du contexte avec localStorage à chaque mise à jour
+    if (user) {
+      localStorage.setItem('user', JSON.stringify(user));
+    } else {
+      localStorage.removeItem('user');
+    }
+  }, [user]); // Mettre à jour `localStorage` lorsque `user` change
+  
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -53,12 +63,17 @@ function Nav() {
     setUser(null);
   };
 
+  // Gestion de l'URL de l'image de profil
+  const profileImageURL = user?.profileImage
+    ? `http://localhost:8080/${user.profileImage}?t=${new Date().getTime()}`
+    : '/default-profile.jpg'; // Si pas d'image, image par défaut
+
   return (
     <nav className="nav" onClick={toggleNavFull}>
       <div className="nav__user">
         {user && user.profileImage ? (
           <img
-            src={`https://cleanback.fly.dev/api/${user.profileImage}`}
+            src={profileImageURL}
             alt="Profil utilisateur"
             className="profile-picture"
           />

@@ -21,13 +21,13 @@ function UserRooms({ onRoomsChange }) {
       const selectedRooms = Object.keys(updatedFormData).filter(
         (room) => updatedFormData[room]
       );
-      onRoomsChange(selectedRooms);
+      onRoomsChange(selectedRooms); // Mise à jour des pièces sélectionnées
       return updatedFormData;
     });
   };
 
   return (
-    <div className="">
+    <div className="user-rooms">
       <p className="form-heading">Votre maison comporte :</p>
       <div className="user-form">
         {rooms.map((room) => {
