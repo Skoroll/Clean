@@ -7,7 +7,7 @@ function Contact() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    document.title = 'ChoreHelper - Contact';
+    document.title = 'Contact - ChoreOrganizer ';
   }, []);
 
   // État pour stocker les données du formulaire

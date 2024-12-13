@@ -9,7 +9,7 @@ function Terms() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    document.title = "ChoreHelper - Condition d'utilisation";
+    document.title = "Condition d'utilisation - ChoreOrganizer";
   }, []);
 
   useEffect(() => {

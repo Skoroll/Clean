@@ -8,7 +8,7 @@ function NotFound() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    document.title = 'ChoreHelper - 404';
+    document.title = '404 - ChoreOrganizer';
   }, []);
 
   useEffect(() => {

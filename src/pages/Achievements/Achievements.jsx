@@ -10,7 +10,7 @@ function Achievements() {
   const [error, setError] = useState(null); // Message d'erreur en cas de problème
   
   useEffect(() => {
-    document.title = 'ChoreHelper - Succès';
+    document.title = 'Succès - ChoreOrganizer';
   }, []);
 
   useEffect(() => {

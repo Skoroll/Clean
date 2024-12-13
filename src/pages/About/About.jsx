@@ -9,7 +9,7 @@ function About() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    document.title = 'ChoreHelper - A propos';
+    document.title = 'A propos - ChoreOrganizer';
   }, []);
 
     useEffect(() => {
@@ -17,7 +17,7 @@ function About() {
     }, [pathname]);
   return (
     <div className='about'>
-      <h1>CleanHelper, qui sommes-nous ?</h1>
+      <h1>ChoreOrganizer, qui sommes-nous ?</h1>
 
       <div className='our-mission'>
         <h2>Notre mission</h2>

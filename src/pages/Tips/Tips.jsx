@@ -9,7 +9,7 @@ function Tips() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    document.title = 'ChoreHelper - Conseils';
+    document.title = 'Conseils - ChoreOrganizer';
   }, []);
 
   useEffect(() => {

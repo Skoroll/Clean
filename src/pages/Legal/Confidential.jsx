@@ -8,7 +8,7 @@ function Confidential() {
   const { pathname } = useLocation();
   
   useEffect(() => {
-    document.title = 'ChoreHelper - Confidentialité';
+    document.title = 'Confidentialité - ChoreOrganizer';
   }, []);
 
   useEffect(() => {

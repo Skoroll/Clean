@@ -13,7 +13,7 @@ function Task() {
   const { user, setUser } = useContext(UserContext);
 
   useEffect(() => {
-    document.title = 'ChoreHelper - Votre ménage';
+    document.title = 'Votre ménage - ChoreOrganizer';
   }, []);
 
   useEffect(() => {

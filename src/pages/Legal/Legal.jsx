@@ -10,7 +10,7 @@ function Legal() {
     const { pathname } = useLocation();
 
     useEffect(() => {
-        document.title = 'ChoreHelper - Mentions légale';
+        document.title = 'Mentions légale - ChoreOrganizer';
       }, []);
 
     useEffect(() => {
@@ -24,7 +24,7 @@ function Legal() {
             <div className="legal-div">
                 <article className='legal-div__article'>
                     <h2>Editeur du site</h2>
-                    <p>L'application web CleanHelper (ci-après "le Site") est éditée par :</p>
+                    <p>L'application web ChoreOrganizer (ci-après "le Site") est éditée par :</p>
                     <ul>
                         <li><span className="legal-div__article--bold">Nom de l'éditeur :</span> Skorol</li>
                         <li><span className="legal-div__article--bold">Adresse :</span> [ADRESSE]</li>

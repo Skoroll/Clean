@@ -11,7 +11,7 @@ function Partner() {
   const [loading, setLoading] = useState(true); // État de chargement
 
   useEffect(() => {
-    document.title = 'ChoreHelper - Partenaires';
+    document.title = 'Partenaires - ChoreOrganizer';
   }, []);
 
   // Charger les données et gérer les erreurs

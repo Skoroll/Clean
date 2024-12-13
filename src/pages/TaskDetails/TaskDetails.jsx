@@ -17,7 +17,7 @@ function TaskDetails() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    document.title = `ChoreHelper - ${roomName}`;
+    document.title = `${roomName} - ChoreOrganizer`;
   }, [roomName]);
   
 

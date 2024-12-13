@@ -9,7 +9,7 @@ function FAQ() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    document.title = 'ChoreHelper - FAQ';
+    document.title = 'FAQ - ChoreOrganizer';
   }, []);
 
   useEffect(() => {
@@ -17,19 +17,19 @@ function FAQ() {
   }, [pathname]);
   return (
     <div className='faq'>
-     <h1> FAQ - HouseHelper</h1>
-<h2 className='faq--question'> Qu'est-ce que HouseHelper ?</h2>
-<p>HouseHelper est une application conçue pour vous aider à organiser votre ménage de manière simple et efficace. 
+     <h1> FAQ - ChoreOrganizer</h1>
+<h2 className='faq--question'> Qu'est-ce que ChoreOrganizer ?</h2>
+<p>ChoreOrganizer est une application conçue pour vous aider à organiser votre ménage de manière simple et efficace. 
   Elle vous permet de créer des tâches à faire pour chaque pièce de votre maison,
    d'accéder à des conseils utiles, et même de définir des tâches personnalisées pour mieux gérer votre quotidien.</p>
 
-   <h3 className='faq--question'>2. Comment créer un compte sur HouseHelper ?</h3>
+   <h3 className='faq--question'>2. Comment créer un compte sur ChoreOrganizer ?</h3>
 <p>Pour créer un compte, cliquez sur "Créer un compte" dans l'écran d'accueil, 
   puis remplissez les champs requis (nom, email, mot de passe). 
   Vous pouvez également télécharger une image de profil pour personnaliser votre compte.</p>
 
 <h3 className='faq--question'>3. Comment fonctionne la gestion des tâches ?</h3>
-<p>HouseHelper génère automatiquement une liste de tâches pour chaque pièce de votre maison. 
+<p>ChoreOrganizer génère automatiquement une liste de tâches pour chaque pièce de votre maison. 
   Vous pouvez ajouter des tâches spécifiques à chaque pièce et les marquer comme "Terminées" une fois que vous avez terminé. 
   Les tâches sont divisées en plusieurs catégories, telles que le nettoyage, l'organisation et l'entretien.</p>
 
@@ -42,7 +42,7 @@ function FAQ() {
   Allez dans les paramètres pour ajuster la liste des pièces et ajouter de nouvelles pièces si nécessaire.</p>
 
 <h3 className='faq--question'>6. Quelles sortes de conseils sont disponibles dans l'app ?</h3>
-<p>HouseHelper vous propose des conseils pratiques sur l'entretien de la maison, 
+<p>ChoreOrganizer vous propose des conseils pratiques sur l'entretien de la maison, 
   des astuces de nettoyage et de gestion du ménage. Vous pouvez accéder à ces conseils à partir du menu "Nos conseils".</p>
 
 <h3 className='faq--question'>7. Comment supprimer un compte ?</h3>
@@ -62,7 +62,7 @@ function FAQ() {
   "Nous contacter" dans le menu principal de l'application. Nous ferons de notre mieux pour résoudre votre problème dans les plus brefs délais.</p>
 
 <h3 className='faq--question'>11. L'application est-elle disponible sur mobile ?</h3>
-<p>Oui, HouseHelper est disponible sur les appareils mobiles. Vous pouvez l'utiliser pour gérer vos tâches ménagères en déplacement.</p>
+<p>Oui, ChoreOrganizer est disponible sur les appareils mobiles. Vous pouvez l'utiliser pour gérer vos tâches ménagères en déplacement.</p>
     </div>
   );
 }

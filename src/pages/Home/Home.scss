@@ -75,3 +75,37 @@
 .sign-btn {
   @include base-btn;
 }
+
+.home__content--beta{
+  margin-bottom: $padding-page;
+
+.beta__box--features{
+  @include flex-row;
+  justify-content: center;
+  gap: $gap-base;
+  ul{
+    @include ul-base;
+  }
+}
+
+.beta__box--inside{
+  width: 45%;
+  min-width: 250px;
+  padding: $padding-elem;
+
+  p{
+    color: red;
+    font-weight: 600;
+  }
+}
+
+.beta__box--annoncement{
+  p{
+    color: red;
+    font-weight: 600;
+  }
+  h2, p{
+    text-align: center;
+  }
+}
+}

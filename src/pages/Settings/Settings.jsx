@@ -26,7 +26,7 @@ function Settings() {
   const serverURL = 'http://localhost:8080/'; // Remplacez par l'URL de votre serveur de production
 
   useEffect(() => {
-    document.title = 'Paramètres - ChoreHelper';
+    document.title = 'Paramètres - ChoreOrganizer';
   }, []);
 
   // Supprimer le compte utilisateur
@@ -210,7 +210,7 @@ function Settings() {
           </div>
 
           {/* Liste des pièces */}
-          <div className="settings__options--param">
+          {/*<div className="settings__options--param">
             <label>
               Vos pièces
               {rooms.length > 0 ? (
@@ -226,7 +226,7 @@ function Settings() {
                 <p>{error || 'Aucune pièce trouvée.'}</p>
               )}
             </label>
-          </div>
+          </div>*/}
           <input type='submit' className='sign-btn' value="Valider les changements"/>
         </form>
 
