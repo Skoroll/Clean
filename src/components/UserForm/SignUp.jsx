@@ -83,8 +83,8 @@ formDataToSend.forEach((value, key) => {
 ;
   
     try {
-      //const response = await axios.post('http://localhost:8080/api/users/register', formDataToSend, {
-     const response = await axios.post('https://cleanback.fly.dev/api/users/register', formDataToSend, { 
+    //const response = await axios.post('http://localhost:8080/api/users/register', formDataToSend, {
+       const response = await axios.post('https://cleanback.fly.dev/api/users/register', formDataToSend, { 
         headers: {
           'Content-Type': 'multipart/form-data',
         },

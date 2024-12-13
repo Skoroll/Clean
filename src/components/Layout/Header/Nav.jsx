@@ -64,11 +64,11 @@ function Nav() {
   };
 
   // Gestion de l'URL de l'image de profil
-  /*const profileImageURL = user?.profileImage
+  /* const profileImageURL = user?.profileImage
     ? `http://localhost:8080/${user.profileImage}?t=${new Date().getTime()}`
     : '/default-profile.jpg'; // Si pas d'image, image par défaut*/
 
-    const profileImageURL = user?.profileImage
+   const profileImageURL = user?.profileImage
     ? `https://cleanback.fly.dev/${user.profileImage}?t=${new Date().getTime()}`
     : '/default-profile.jpg'; 
 
