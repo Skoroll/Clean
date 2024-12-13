@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/Clean/static/css/main.bfdfcadc.css",
-    "main.js": "/Clean/static/js/main.7f1874f8.js",
-    "static/js/453.756a1453.chunk.js": "/Clean/static/js/453.756a1453.chunk.js",
-    "static/media/logo.png": "/Clean/static/media/logo.6a283a2a65e9530da5ac.png",
-    "static/media/toilette.png": "/Clean/static/media/toilette.1c3260d5dc66cc533b2a.png",
-    "static/media/restaurant.png": "/Clean/static/media/restaurant.b20c5da4b57c859459b3.png",
-    "static/media/decoration.png": "/Clean/static/media/decoration.137e1a8fa7c81f289c0f.png",
-    "static/media/de-face.png": "/Clean/static/media/de-face.62f9b19fa4a2a69a016c.png",
-    "static/media/baignoire.png": "/Clean/static/media/baignoire.3791c42606e2ab812eb4.png",
-    "static/media/etageres.png": "/Clean/static/media/etageres.cf779ad70d89240202c4.png",
-    "static/media/kitchen.png": "/Clean/static/media/kitchen.281f0bcf59c7d00dcde7.png",
-    "static/media/lit-double.png": "/Clean/static/media/lit-double.ee56a00023301392c17f.png",
-    "index.html": "/Clean/index.html",
-    "main.bfdfcadc.css.map": "/Clean/static/css/main.bfdfcadc.css.map",
-    "main.7f1874f8.js.map": "/Clean/static/js/main.7f1874f8.js.map",
-    "453.756a1453.chunk.js.map": "/Clean/static/js/453.756a1453.chunk.js.map"
+    "main.css": "/ChoreOrganizer/static/css/main.76b6b699.css",
+    "main.js": "/ChoreOrganizer/static/js/main.c2faa1ea.js",
+    "static/js/453.756a1453.chunk.js": "/ChoreOrganizer/static/js/453.756a1453.chunk.js",
+    "static/media/logo.png": "/ChoreOrganizer/static/media/logo.6a283a2a65e9530da5ac.png",
+    "static/media/toilette.png": "/ChoreOrganizer/static/media/toilette.1c3260d5dc66cc533b2a.png",
+    "static/media/restaurant.png": "/ChoreOrganizer/static/media/restaurant.b20c5da4b57c859459b3.png",
+    "static/media/decoration.png": "/ChoreOrganizer/static/media/decoration.137e1a8fa7c81f289c0f.png",
+    "static/media/de-face.png": "/ChoreOrganizer/static/media/de-face.62f9b19fa4a2a69a016c.png",
+    "static/media/baignoire.png": "/ChoreOrganizer/static/media/baignoire.3791c42606e2ab812eb4.png",
+    "static/media/etageres.png": "/ChoreOrganizer/static/media/etageres.cf779ad70d89240202c4.png",
+    "static/media/kitchen.png": "/ChoreOrganizer/static/media/kitchen.281f0bcf59c7d00dcde7.png",
+    "static/media/lit-double.png": "/ChoreOrganizer/static/media/lit-double.ee56a00023301392c17f.png",
+    "index.html": "/ChoreOrganizer/index.html",
+    "main.76b6b699.css.map": "/ChoreOrganizer/static/css/main.76b6b699.css.map",
+    "main.c2faa1ea.js.map": "/ChoreOrganizer/static/js/main.c2faa1ea.js.map",
+    "453.756a1453.chunk.js.map": "/ChoreOrganizer/static/js/453.756a1453.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.bfdfcadc.css",
-    "static/js/main.7f1874f8.js"
+    "static/css/main.76b6b699.css",
+    "static/js/main.c2faa1ea.js"
   ]
 }
