@@ -79,7 +79,7 @@ function Profile() {
         {user && (
           <>
 <img
-  src={user.profileImage ? `http://localhost:5000/${user.profileImage}` : "/default-profile.png"}
+  //src={user.profileImage ? `http://localhost:5000/${user.profileImage}` : "/default-profile.png"}
   alt="Photo de profil"
   className="profile-user--image"
 />
