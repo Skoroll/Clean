@@ -93,8 +93,16 @@ formDataToSend.forEach((value, key) => {
       console.log('Réponse du serveur:', response);
       navigate('/sign-in');  // Rediriger après succès
     } catch (error) {
-      console.error('Erreur lors de la création de l\'utilisateur:', error);
+      console.error("Erreur lors de la création de l'utilisateur:", error);
+    
+      if (error.response) {
+        console.error("Réponse serveur:", error.response.data);
+        setError(error.response.data.error || "Erreur lors de l'inscription.");
+      } else {
+        setError("Erreur réseau ou serveur.");
+      }
     }
+    
   };
   
   return (
