@@ -23,8 +23,8 @@ function Settings() {
   const token = localStorage.getItem('userToken');
 
   // URL du serveur
-  const serverURL = 'http://localhost:8080/'; // Remplacez par l'URL de votre serveur de production
-
+  /*const serverURL = 'http://localhost:8080/'; */
+  const serverURL = 'https://cleanback.fly.dev';
   useEffect(() => {
     document.title = 'Paramètres - ChoreOrganizer';
   }, []);
