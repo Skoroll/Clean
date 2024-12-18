@@ -145,7 +145,11 @@ function Settings() {
           <div className="settings__options--param">
             <label>
               <div className="profile-image-container">
-                <img src={previewImage} alt="Photo de profil" className="profile-image" />
+                {previewImage ?(
+                  <img src={previewImage} alt="Photo de profil" className="profile-image"/>
+                 ) : (
+                   <img src="https://www.gravatar.com/avatar/?d=mp" alt="Image de profil" />
+                )}
                <p className='edit-icon'>Modifier <i className="fa-solid fa-pen-to-square"></i></p>
               </div>
               <input className='profile-image-container--input'
