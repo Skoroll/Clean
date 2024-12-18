@@ -51,8 +51,8 @@
 .profile-image-container {
   position: relative;
   @include flex-column;
-  height: 280x;
-  width: 100%;
+  height: 280px;
+  width: 280px;
   margin: auto;
 
   .profile-image {
