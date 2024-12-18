@@ -33,17 +33,13 @@ function SignUp() {
   // Gérer l'image de profil
   const handleImageChange = (e) => {
     const image = e.target.files[0];
-    console.log('Image sélectionnée:', image);
+  
   
     if (!image) {
       console.error('Aucune image sélectionnée');
       return;
     }
-  
-    console.log('Nom du fichier:', image.name); // Assure-toi qu’il a une extension
-    console.log('Type MIME:', image.type); // Vérifie le type MIME
-    console.log('Taille:', image.size); // Vérifie la taille pour des restrictions
-  
+
     const fileExtension = image.type.split('/')[1];
     const renamedImage = new File([image], `${Date.now()}.${fileExtension}`, { type: image.type });
   
@@ -61,7 +57,6 @@ function SignUp() {
     const { name, email, password, confirmPassword, rooms } = formData;
   
     // Log des données avant envoi pour validation
-    console.log('Données à envoyer:', { name, email, password, confirmPassword, rooms });
   
     const formDataToSend = new FormData();  // Renomme cette variable pour ne pas masquer l'état formData
     formDataToSend.append('name', name);
@@ -72,13 +67,13 @@ function SignUp() {
   
     // Si une image est sélectionnée, l'ajouter au FormData
     if (profileImage) {
-      console.log('Image sélectionnée:', profileImage);
+  
       formDataToSend.append('profileImage', profileImage);
     }
   
-    console.log('FormData avant envoi:');
+
 formDataToSend.forEach((value, key) => {
-  console.log(key, value);
+
 });
 ;
   
@@ -90,7 +85,6 @@ formDataToSend.forEach((value, key) => {
         },
       });
   
-      console.log('Réponse du serveur:', response);
       navigate('/sign-in');  // Rediriger après succès
     } catch (error) {
       console.error("Erreur lors de la création de l'utilisateur:", error);

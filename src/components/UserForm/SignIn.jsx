@@ -30,12 +30,9 @@ function SignIn() {
     setSuccess(false);
     setLoading(true);
   
-    console.log('Données envoyées au serveur:', formData); // Vérifie ce qui est envoyé
-    console.log('Email:', formData.email);  // Vérifie la valeur de l'email
-    console.log('Mot de passe:', formData.password);  // Vérifie la valeur du mot de passe
     try {
       const response = await axios.post('/users/login', formData);
-      console.log('Réponse du serveur:', response.data);
+
 
       
       if (response.data.token && response.data.user) {

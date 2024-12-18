@@ -37,12 +37,10 @@ function Contact() {
       )
       .then(
         (result) => {
-          console.log(result.text);
           setStatus("Votre message a été envoyé avec succès !");
           setFormData({ name: "", email: "", message: "" }); // Réinitialisation des champs du formulaire
         },
         (error) => {
-          console.log(error.text);
           setStatus("Une erreur s'est produite lors de l'envoi de votre message.");
         }
       );

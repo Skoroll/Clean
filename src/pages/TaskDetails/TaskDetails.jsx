@@ -73,7 +73,6 @@ function TaskDetails() {
   const markAsDone = async (taskId) => {
     try {
       const response = await axiosInstance.put(`/tasks/${taskId}/done`); // Mise à jour de la tâche en base de données
-      console.log("Réponse après validation de la tâche : ", response.data);
       fetchTasks(); // Rafraîchir la liste des tâches après mise à jour
     } catch (error) {
       console.error("Erreur lors de la mise à jour de la tâche", error);
@@ -84,7 +83,6 @@ function TaskDetails() {
   const deleteTask = async (taskId) => {
     try {
       const response = await axiosInstance.delete(`/tasks/${taskId}`); // Assurez-vous que cette route existe
-      console.log("Tâche supprimée :", response.data);
       fetchTasks(); // Rafraîchir la liste après suppression
     } catch (error) {
       if (error.response) {

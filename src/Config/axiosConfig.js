@@ -16,7 +16,6 @@ axiosInstance.interceptors.request.use(
     }
 
     axiosInstance.interceptors.request.use((config) => {
-      console.log("Requête axios configurée :", config);
       return config;
     });
     

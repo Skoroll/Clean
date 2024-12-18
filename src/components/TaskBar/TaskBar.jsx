@@ -20,7 +20,7 @@ function TaskBar() {
         const response = await axiosInstance.get('/users/profile', {
           headers: { Authorization: `Bearer ${token}` },
         });
-        console.log("Rooms fetched:", response.data.user.rooms);
+
         setRooms(response.data.user.rooms || []);
       } catch (err) {
         console.error("Erreur lors de la récupération des pièces :", err);
@@ -52,14 +52,14 @@ function TaskBar() {
             className="fa-solid fa-plus"
             onClick={() => openModal(<AddTaskForm rooms={rooms} error={error} onClose={closeModal} />)}
           ></i>
-          <i
-            className="fa-solid fa-pen"
+          <i 
+            className="fa-solid fa-pen-to-square"
             onClick={() => openModal(<EditTaskForm rooms={rooms} error={error} onClose={closeModal} />)}
           ></i>
-          <i
+          {/*<i
             className="fa-solid fa-trash"
             onClick={() => openModal(<p>Supprimer une tâche</p>)}
-          ></i>
+          ></i>*/}
         </div>
 
         {/* Bouton pour afficher/masquer la barre */}

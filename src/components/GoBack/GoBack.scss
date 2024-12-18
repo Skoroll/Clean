@@ -1,28 +1,30 @@
-@import "../../styles/mixins.scss";
 @import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
 
-.go-back {
-    margin: auto 0;
+.go-back-link{
+    position: relative;
+    @include flex-row;
     color: $primary-color;
-    font-style: italic;
-    font-size: large;
-    border-bottom: 1px solid transparent; 
-    transition: border-bottom-color 1s ease;
-    width: 155px;
-    &:hover {
-        border-bottom-color: $primary-color; 
+    border: none;
+    background: none;
+    padding: $padding-btn;
+    align-items: center;
+    cursor: pointer;
+    margin-left: 20px;
+
+    &:hover{
+      
+        .fa-arrow-left{
+            left: -10px; 
+        }
     }
 }
-
-.back-div{
-    @include flex-column;
-    margin-bottom: 20px;
-    position: fixed;
-    width: 97%;
-    background-color: $background-color;
-    z-index: 850;
-    top: 80px;
-    left: 0;
-    height: 20px;
-    padding: $padding-elem;
+p{
+    margin: 0;
+}
+.fa-arrow-left{
+    position: absolute;
+    left: -5px;
+    transition: left 1s ease;
+  
 }

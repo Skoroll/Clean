@@ -1,11 +1,50 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axiosInstance from '../../../Config/axiosConfig';
 
-function EditTaskForm({ rooms, tasksByRoom, onSave }) {
+function EditTaskForm({ onSave }) {
+  const [rooms, setRooms] = useState([]); // Liste des pièces
   const [selectedRoom, setSelectedRoom] = useState('');
+  const [tasks, setTasks] = useState([]); // Liste des tâches de la pièce sélectionnée
   const [selectedTask, setSelectedTask] = useState('');
-  const [taskData, setTaskData] = useState(null);
+  const [taskData, setTaskData] = useState(null); // Données de la tâche sélectionnée
+  const [error, setError] = useState(null);
 
-  // Gestion de la sélection d'une pièce
+  // Récupérer la liste des pièces au montage
+  useEffect(() => {
+    const fetchRooms = async () => {
+      try {
+        const token = localStorage.getItem('userToken');
+        const response = await axiosInstance.get('/users/profile', {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        setRooms(response.data.user.rooms || []); // Mise à jour des pièces
+      } catch (err) {
+        console.error('Erreur lors de la récupération des pièces :', err);
+        setError('Impossible de charger les pièces.');
+      }
+    };
+    fetchRooms();
+  }, []);
+
+  // Récupérer les tâches en fonction de la pièce sélectionnée
+  useEffect(() => {
+    if (selectedRoom) {
+      const fetchTasks = async () => {
+        try {
+          const response = await axiosInstance.get(`/tasks?room=${selectedRoom}`);
+          setTasks(response.data); // Filtrage des tâches par pièce
+        } catch (error) {
+          console.error('Erreur lors de la récupération des tâches :', error);
+          setTasks([]);
+        }
+      };
+      fetchTasks();
+    } else {
+      setTasks([]); // Réinitialise les tâches si aucune pièce n'est sélectionnée
+    }
+  }, [selectedRoom]);
+
+  // Gestion du changement de pièce
   const handleRoomChange = (e) => {
     const room = e.target.value;
     setSelectedRoom(room);
@@ -13,14 +52,15 @@ function EditTaskForm({ rooms, tasksByRoom, onSave }) {
     setTaskData(null); // Réinitialise les données de la tâche
   };
 
-  // Gestion de la sélection d'une tâche
+  // Gestion du changement de tâche
   const handleTaskChange = (e) => {
     const taskId = e.target.value;
     setSelectedTask(taskId);
 
-    // Charger les données de la tâche
-    const task = tasksByRoom[selectedRoom].find((task) => task.id === taskId);
-    setTaskData(task);
+    const task = tasks.find((task) => task.id === taskId);
+    if (task) {
+      setTaskData(task); // Préremplit le formulaire avec les données de la tâche
+    }
   };
 
   // Gestion des modifications dans le formulaire
@@ -35,22 +75,16 @@ function EditTaskForm({ rooms, tasksByRoom, onSave }) {
     if (onSave) {
       onSave(selectedRoom, selectedTask, taskData);
     }
-    console.log('Tâche mise à jour:', taskData);
   };
 
   return (
     <div className="edit-task-form">
       <p className="form-heading">Modifier une tâche</p>
-      
+
       {/* Sélection de la pièce */}
       <div className="form-group">
         <label htmlFor="room">Choisir une pièce</label>
-        <select
-          id="room"
-          value={selectedRoom}
-          onChange={handleRoomChange}
-          required
-        >
+        <select id="room" value={selectedRoom} onChange={handleRoomChange} required>
           <option value="" disabled>Choisissez une pièce</option>
           {rooms.map((room, index) => (
             <option key={index} value={room}>{room}</option>
@@ -62,14 +96,9 @@ function EditTaskForm({ rooms, tasksByRoom, onSave }) {
       {selectedRoom && (
         <div className="form-group">
           <label htmlFor="task">Choisir une tâche</label>
-          <select
-            id="task"
-            value={selectedTask}
-            onChange={handleTaskChange}
-            required
-          >
+          <select id="task" value={selectedTask} onChange={handleTaskChange} required>
             <option value="" disabled>Choisissez une tâche</option>
-            {tasksByRoom[selectedRoom]?.map((task) => (
+            {tasks.map((task) => (
               <option key={task.id} value={task.id}>{task.name}</option>
             ))}
           </select>
@@ -85,7 +114,7 @@ function EditTaskForm({ rooms, tasksByRoom, onSave }) {
               type="text"
               id="taskName"
               name="name"
-              value={taskData.name}
+              value={taskData.name || ''}
               onChange={handleChange}
               required
             />
@@ -97,7 +126,7 @@ function EditTaskForm({ rooms, tasksByRoom, onSave }) {
               type="number"
               id="estimatedTime"
               name="time"
-              value={taskData.time}
+              value={taskData.time || ''}
               onChange={handleChange}
               required
             />
@@ -108,7 +137,7 @@ function EditTaskForm({ rooms, tasksByRoom, onSave }) {
             <select
               id="frequency"
               name="frequency"
-              value={taskData.frequency}
+              value={taskData.frequency || ''}
               onChange={handleChange}
               required
             >
@@ -124,7 +153,7 @@ function EditTaskForm({ rooms, tasksByRoom, onSave }) {
             <textarea
               id="description"
               name="description"
-              value={taskData.description}
+              value={taskData.description || ''}
               onChange={handleChange}
               maxLength="300"
             ></textarea>
@@ -136,7 +165,7 @@ function EditTaskForm({ rooms, tasksByRoom, onSave }) {
               type="text"
               id="equipments"
               name="equipments"
-              value={taskData.equipments}
+              value={taskData.equipments || ''}
               onChange={handleChange}
             />
           </div>

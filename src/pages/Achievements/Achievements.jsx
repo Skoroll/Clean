@@ -24,7 +24,6 @@ function Achievements() {
           },
         });
         
-        console.log(response.data); // Vérifiez la structure de la réponse ici
         if (response.data) {
           setAchievements(response.data);
         } else {

@@ -13,11 +13,13 @@ const AddTaskForm = ({ rooms, error, onClose }) => {
 
   const handleChange = (e) => {
     setTask({ ...task, [e.target.name]: e.target.value });
+
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+    window.location.reload();
+    
     // Validation des champs
     if (!task.frequency) {
       alert('Veuillez sélectionner une fréquence.');
@@ -43,7 +45,6 @@ const AddTaskForm = ({ rooms, error, onClose }) => {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-      console.log('Tâche ajoutée avec succès:', response.data);
   
       // Appel de onClose après succès
       if (onClose) {
