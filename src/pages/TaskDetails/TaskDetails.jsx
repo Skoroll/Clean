@@ -72,12 +72,14 @@ function TaskDetails() {
   // Fonction pour marquer une tâche comme terminée
   const markAsDone = async (taskId) => {
     try {
-      const response = await axiosInstance.put(`/tasks/${taskId}/done`); // Mise à jour de la tâche en base de données
-      fetchTasks(); // Rafraîchir la liste des tâches après mise à jour
+      const response = await axiosInstance.put(`/tasks/${taskId}/done`);
+      console.log("Réponse après mise à jour :", response.data); // Vérifiez si dateDone/lastCompleted est bien retourné
+      fetchTasks(); // Rafraîchir les tâches
     } catch (error) {
       console.error("Erreur lors de la mise à jour de la tâche", error);
     }
   };
+  
 
   // Nouvelle fonction : supprimer une tâche
   const deleteTask = async (taskId) => {
@@ -176,9 +178,10 @@ function TaskDetails() {
             completedTasks.map((task) => (
               <div key={task._id} className="task-done-item">
                 <p>
-                  {task.name} - {task.time}
+                  {task.name} - {task.time} - {task.lastCompleted ? new Date(task.lastCompleted).toLocaleDateString() : 'Non défini'}
                 </p>
               </div>
+
             ))
           ) : (
             <p className="tasks-done--none">
