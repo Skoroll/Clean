@@ -105,13 +105,21 @@
   }
 
   &__display{
-    @include flex-column;
+    @include flex-row;
     gap: $gap-base;
+
     
     &--item {
+      @include flex-column;
+      min-width: 20%;
+      max-width: 30%;
+      min-height: 170px;
+      background-color: $secondary-opacity;
+      padding: $padding-elem;
+      justify-content: space-around;
       p {
-        background-color: $secondary-opacity;
-        padding: $padding-elem;
+       
+        
       }
     }
 

@@ -65,7 +65,7 @@ function TaskBar() {
 
         {/* Bouton pour afficher/masquer la barre */}
         <div className="task-bar--slider-btn" ></div>
-        <i onClick={toggleBar} class="fa-solid fa-arrow-down"></i>
+        <i onClick={toggleBar} className="fa-solid fa-arrow-down"></i>
       </div>
 
       {/* Composant Modal */}

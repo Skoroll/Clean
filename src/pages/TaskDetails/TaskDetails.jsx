@@ -189,11 +189,13 @@ function TaskDetails() {
               return (
                 <div key={task._id} className="tasks-done__display--item">
                   <p>
-                   <span className="tasks-done__display--name">{task.name}</span> <br />
+                   <span className="tasks-done__display--name">{task.name}</span>
+                   </p>
+                   <p>
                     Fait le : <span className="tasks-done__display--date"> {task.lastCompleted ? new Date(task.lastCompleted).toLocaleDateString() : 'Non défini'} </span>
                     <br />
                     A refaire le :<span className="tasks-done__display--date"> {nextDueDateString}</span>
-                  </p>
+                    </p>
                 </div>
               );
             })
