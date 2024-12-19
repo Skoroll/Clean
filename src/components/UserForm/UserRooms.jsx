@@ -28,7 +28,7 @@ function UserRooms({ onRoomsChange }) {
 
   return (
     <div className="user-rooms">
-      <p className="form-heading">Votre maison comporte :</p>
+      <p className="form-heading"><span className="asterisk">*</span> Votre maison comporte :</p>
       <div className="user-form">
         {rooms.map((room) => {
           const roomId = room.replace(/\s+/g, "").toLowerCase();

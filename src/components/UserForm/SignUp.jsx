@@ -4,6 +4,7 @@ import axios from "../../Config/axiosConfig";
 import UserRooms from "./UserRooms";
 import GoBack from "../GoBack/GoBack";
 import "./UserForm.scss";
+import { useEffect } from "react";
 
 function SignUp() {
   const navigate = useNavigate();
@@ -18,6 +19,14 @@ function SignUp() {
   const [file, setFile] = useState(null); // Pour l'aperçu de l'image
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
+
+  useEffect(() => {
+    document.title = `S'inscrire - ChoreOrganizer`;
+  }, []);
+
+    useEffect(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    }, []);
 
   // Gérer les changements dans les champs du formulaire
   const handleChange = (e) => {
@@ -73,7 +82,7 @@ function SignUp() {
   
 
 formDataToSend.forEach((value, key) => {
-
+  window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 });
 ;
   
@@ -88,7 +97,7 @@ formDataToSend.forEach((value, key) => {
       navigate('/sign-in');  // Rediriger après succès
     } catch (error) {
       console.error("Erreur lors de la création de l'utilisateur:", error);
-    
+
       if (error.response) {
         console.error("Réponse serveur:", error.response.data);
         setError(error.response.data.error || "Erreur lors de l'inscription.");
@@ -101,16 +110,17 @@ formDataToSend.forEach((value, key) => {
   
   return (
     <div className="form">
-      <GoBack target="/" />
+      <GoBack />
       <h1>Créer un compte</h1>
       <div className="form-basic">
         {error && <p className="error-message">{error}</p>}
         {success && <p className="success-message">Compte créé avec succès !</p>}
 
         <form onSubmit={handleSubmit} className="user-form">
-          <p className="form-heading">Pour commencer, qui êtes-vous ?</p>
+          <p className="user-form--heading">Qui êtes-vous ?</p>
+          <p className="user-form--rules">* champ obligatoires</p>
           <div className="form-group">
-            <label htmlFor="name">Nom</label>
+            <label htmlFor="name"> <span className="asterisk">*</span> Nom</label>
             <input
               type="text"
               id="name"
@@ -122,7 +132,7 @@ formDataToSend.forEach((value, key) => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="email">E-mail</label>
+            <label htmlFor="email"><span className="asterisk">*</span> E-mail</label>
             <input
               type="email"
               id="email"
@@ -134,7 +144,7 @@ formDataToSend.forEach((value, key) => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="password">Mot de passe</label>
+            <label htmlFor="password"><span className="asterisk">*</span> Mot de passe</label>
             <input
               type="password"
               id="password"
@@ -146,7 +156,7 @@ formDataToSend.forEach((value, key) => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="confirmPassword">Confirmer le mot de passe</label>
+            <label htmlFor="confirmPassword"><span className="asterisk">*</span> Confirmer le mot de passe</label>
             <input
               type="password"
               id="confirmPassword"

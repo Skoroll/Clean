@@ -98,16 +98,29 @@
   }
 }
 
-.task-done {
+.tasks-done {
   &--none {
     font-style: italic;
     margin-left: 40px;
   }
 
-  &-item {
-    p {
-      background-color: $secondary-opacity;
-      padding: $padding-elem;
+  &__display{
+    @include flex-column;
+    gap: $gap-base;
+    
+    &--item {
+      p {
+        background-color: $secondary-opacity;
+        padding: $padding-elem;
+      }
+    }
+
+    &--name{
+      font-size: 18px;
+    }
+
+    &--date{
+      font-weight: 450;
     }
   }
 }
@@ -128,9 +141,7 @@
   }
 }
 
-.fa-trash {
 
-}
 
 .fa-check {
   top: 40%;

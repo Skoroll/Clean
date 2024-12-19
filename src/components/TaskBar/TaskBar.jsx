@@ -47,6 +47,7 @@ function TaskBar() {
   return (
     <>
       <div className={`task-bar ${barOpen ? 'open' : ''}`}>
+      
         <div className="task-bar__wrapper">
           <i
             className="fa-solid fa-plus"
@@ -63,7 +64,8 @@ function TaskBar() {
         </div>
 
         {/* Bouton pour afficher/masquer la barre */}
-        <div className="task-bar--slider-btn" onClick={toggleBar}></div>
+        <div className="task-bar--slider-btn" ></div>
+        <i onClick={toggleBar} class="fa-solid fa-arrow-down"></i>
       </div>
 
       {/* Composant Modal */}
