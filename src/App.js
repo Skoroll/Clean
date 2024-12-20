@@ -6,7 +6,6 @@ import Home from './pages/Home/Home';
 import Contact from './pages/Contact/Contact';
 import Settings from './pages/Settings/Settings';
 import Task from './pages/Task/Task';
-import User from './pages/User/User';
 import NotFound from './pages/NotFound/NotFound';
 import SignIn from './components/UserForm/SignIn';
 import SignUp from './components/UserForm/SignUp';
@@ -35,7 +34,6 @@ function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/parametres" element={<Settings />} />
               <Route path="/votre-menage" element={<Task />} />
-              <Route path="/user" element={<User />} />
               <Route path="/sign-in" element={<SignIn />} />
               <Route path="/sign-up" element={<SignUp />} />
               <Route path="/votre-menage/:roomName" element={<TaskDetails />} />

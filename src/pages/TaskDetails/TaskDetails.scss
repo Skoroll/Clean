@@ -110,16 +110,28 @@
 
     
     &--item {
-      @include flex-column;
-      min-width: 20%;
-      max-width: 30%;
-      min-height: 170px;
+      @include flex-row;
+      width: 100%;
+      gap: $gap-base;
       background-color: $secondary-opacity;
       padding: $padding-elem;
-      justify-content: space-around;
-      p {
-       
+      align-items: center;
+
+      .fa-check{
+        font-size: 25px;
+        height: 100%;
+        display: flex;
+        cursor: pointer;
+        padding: $padding-btn;
         
+        
+        &:hover{
+          color: $text-light;
+          background-color: $secondary-opacity;
+        }
+        &::before{
+          margin: auto;
+        }
       }
     }
 

@@ -85,6 +85,15 @@ function TaskDetails() {
     }
   };
 
+  const unMarkDone = async (taskId) => {
+    try {
+      const response = await axiosInstance.put(`/tasks/${taskId}/undone`);
+        fetchTasks();
+    } catch (error) {
+      console.error("Erreur dans la dévalidation de la tâche.")
+    }
+  }
+
   const deleteTask = async (taskId) => {
     try {
       const response = await axiosInstance.delete(`/tasks/${taskId}`);
@@ -188,6 +197,7 @@ function TaskDetails() {
 
               return (
                 <div key={task._id} className="tasks-done__display--item">
+                  <i onClick={unMarkDone} class="fa-solid fa-check"/>
                   <p>
                    <span className="tasks-done__display--name">{task.name}</span>
                    </p>
