@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import axios from '../../Config/axiosConfig';
 import { UserContext } from '../../UserContext';
 import GoBack from '../GoBack/GoBack';
+import Spinner from '../Spinner/Spinner';
 import './UserForm.scss';
 
 function SignIn() {
@@ -66,7 +67,7 @@ function SignIn() {
       <div className="form-basic">
         {error && <p className="error-message">{error}</p>}
         {success && <p className="success-message">Connexion réussie !</p>}
-        {loading && <p className="loading-message">Chargement...</p>} {/* Affichage du message de chargement */}
+        {loading && <p className="loading-message"><Spinner /></p>} {/* Affichage du message de chargement */}
 
         <form onSubmit={handleSubmit} className="user-form">
           <div className="form-group">

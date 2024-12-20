@@ -4,8 +4,13 @@
 .form{
   @include flex-column;
   gap: $gap-base;
+
+
+
+  }
 .form-basic {
     @include flex-column;
+    position: relative;
     margin: 20px auto;
     padding: 20px;
     border: 1px solid #ddd;
@@ -20,6 +25,17 @@
       text-align: center;
       margin: 5px
     }
+
+    .spinner-container{
+      position: absolute;
+      height: 30px;
+      bottom: 25px;
+      left: 25px;
+  
+      .spinner{
+        width: 25px;
+        height: 25px
+      }
   }
   
 
