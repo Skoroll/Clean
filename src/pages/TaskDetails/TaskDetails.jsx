@@ -197,7 +197,7 @@ function TaskDetails() {
 
               return (
                 <div key={task._id} className="tasks-done__display--item">
-                  <i onClick={unMarkDone} class="fa-solid fa-check"/>
+                  <i onClick={() => unMarkDone(task._id)} className="fa-solid fa-check" />
                   <p>
                    <span className="tasks-done__display--name">{task.name}</span>
                    </p>
