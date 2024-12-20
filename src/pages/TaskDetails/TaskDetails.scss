@@ -117,14 +117,14 @@
       padding: $padding-elem;
       align-items: center;
 
-      .fa-check{
+      .fa-circle-xmark{
         font-size: 25px;
         height: 100%;
         display: flex;
         cursor: pointer;
         padding: $padding-btn;
         
-        
+
         &:hover{
           color: $text-light;
           background-color: $secondary-opacity;

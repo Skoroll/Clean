@@ -197,7 +197,7 @@ function TaskDetails() {
 
               return (
                 <div key={task._id} className="tasks-done__display--item">
-                  <i onClick={() => unMarkDone(task._id)} className="fa-solid fa-check" />
+                  <i onClick={() => unMarkDone(task._id)} className="fa-regular fa-circle-xmark" />
                   <p>
                    <span className="tasks-done__display--name">{task.name}</span>
                    </p>
