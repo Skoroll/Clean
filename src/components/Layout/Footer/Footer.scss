@@ -24,14 +24,38 @@
     @include ul-base;
     @include flex-column;
     gap: $gap-base;
+    padding: $padding-elem;
 
-    a {
+
+
+    a, li {
       cursor: pointer;
+      display: flex;
+      gap: 5px;
+
+    }
+    a{
       border-bottom: 1px solid transparent;
       transition: border-bottom 0.3s ease;
 
       &:hover {
         border-bottom: 1px solid $border-color;
+      }
+    }
+    .show-mobile{
+      display: none;
+    }
+
+    .hide-mobile{
+      display: inline;
+    }
+
+    @media (max-width:641px){
+      .show-mobile{
+        display: inline;
+      }
+      .hide-mobile{
+        display: none;
       }
     }
   }

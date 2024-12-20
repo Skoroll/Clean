@@ -9,10 +9,31 @@ function Footer() {
       <div className="footer__section">
         <p className="footer__section--heading">Contact</p>
         <ul>
-          <li> <i className="fa-solid fa-envelope"></i>  <a href='mailto:contact.skorol@gmail.com'>contact.skorol@gmail.com</a></li>
-          <li><i className="fa-solid fa-phone"></i>  00 00 00 00 00</li>
-          <li><Link to="/contact"><i className="fa-solid fa-paper-plane"></i> Formulaire de contact</Link></li>
-          <li><Link to="/FAQ"><i className="fa-solid fa-circle-question"></i> FAQ</Link></li>
+          <li> 
+            <a href='mailto:contact.skorol@gmail.com'>
+              <i className="fa-solid fa-envelope"></i>
+              <span className="hide-mobile">contact.skorol@gmail.com</span>
+              <span className="show-mobile">E-mail</span>
+            </a>
+          </li>
+          <li>
+            <a href="tel:0000000000">
+            <i className="fa-solid fa-phone"/>
+            <span className="hide-mobile">00 00 00 00 00</span>
+            <span className="show-mobile">Téléphone</span>
+            </a>
+          </li>
+          <li>
+            <Link to="/contact">
+              <i className="fa-solid fa-paper-plane"/> 
+              Formulaire de contact
+              </Link>
+              </li>
+          <li>
+            <Link to="/FAQ"><i className="fa-solid fa-circle-question" /> 
+              FAQ
+              </Link>
+              </li>
         </ul>
       </div>
 
@@ -33,7 +54,7 @@ function Footer() {
           <li><a href="https://www.instagram.com/skoroll_/"><i className="fa-brands fa-instagram"></i> Instagram </a> </li>
           <li><a href="https://www.facebook.com"><i className="fa-brands fa-square-facebook"></i> Facebook </a></li>
           <li> <a href="https://www.youtube.com"> <i className="fa-brands fa-youtube"></i> Youtube </a> </li>
-         <li><a href="https://www.discord.com"> <i className="fa-brands fa-discord"></i> Discord</a></li>
+          <li><a href="https://www.discord.com"> <i className="fa-brands fa-discord"></i> Discord</a></li>
         </ul>
       </div>
 

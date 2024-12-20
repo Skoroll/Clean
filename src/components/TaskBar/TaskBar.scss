@@ -28,10 +28,11 @@
     /* Hauteur de la barre lorsqu'elle est ouverte (ajustée selon le contenu) */
   }
 
-  .fa-arrow-down {
+  .fa-arrow-down,
+  .fa-arrow-up {
     position: absolute;
     display: flex;
-    bottom: -8px;
+    bottom: -9px;
     justify-content: center;
     z-index: 900;
     width: 100%;
@@ -65,9 +66,9 @@
 
   .task-bar--slider-btn {
     position: absolute;
-    height: 17px;
+    height: 20px;
     width: 30%;
-    bottom: -13px;
+    bottom: -15px;
     left: 50%;
     transform: translateX(-50%);
     background-color: $primary-color;
